@@ -36,7 +36,7 @@ params:
   # subtitle speficies a subtitle displayed right after the site title.
   subtitle:
   # switch specifies two emojis to be used as the button toggling color themes.
-  switch: ["🌚", "🌝"]
+  switch: ["🌻", "🌼"]
   # defaultTheme specifies a default theme to be used.
   # currently available options: light, dark, system.
   defaultTheme: system
