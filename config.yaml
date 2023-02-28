@@ -1,0 +1,118 @@
+baseURL: https://amuritna.github.io
+languageCode: en-us
+title: Emmanuella Rumanti @ amuritna.github.io
+copyright: © 2023 Emmanuella Rumanti
+googleAnalytics:
+# paginate specifies the maximum number of posts displayed on the home page.
+paginate: 10
+# theme specifies the name of the theme to be used.
+theme: minima
+# defaultContentLanguage specifies the default language to use.
+defaultContentLanguage: en
+# language.x setup
+languages:
+  en:
+    languageName: EN
+    weight: 1
+  id:
+    languageName: ID
+    weight: 2
+    author:
+      status: status bhs indo 🌍
+      description: |
+        deskripsi bhs indo
+    params:
+      greet: halo masbro :)
+
+# author specifies your name, a slogon and your brief self-introduction.
+author:
+  name: Emmanuella Rumanti
+  status: english status 🌍
+  description: |
+    ablsdnflsndflknsdklfn in english
+params:
+  # greet specifies greeting words.
+  greet: Hello :)
+  # subtitle speficies a subtitle displayed right after the site title.
+  subtitle:
+  # switch specifies two emojis to be used as the button toggling color themes.
+  switch: ["🌚", "🌝"]
+  # defaultTheme specifies a default theme to be used.
+  # currently available options: light, dark, system.
+  defaultTheme: system
+  # displayDate speficies whether or not to display post date on the home page.
+  displayDate: true
+  # displayDescription specifies whether or not to display post description on
+  # the hoem page.
+  displayDescription: true
+  # selectable specifies if your post content can be selected.
+  selectable: true
+  # social is an array containing as many as social accounts to be displayed
+  # in the buttom of every page.
+  social:
+    #- name: "twitter"
+    #  url: "https://twitter.com/realmivinci"
+    - name: "email"
+      url: "mailto:amuritna@gmail.com"
+    - name: "github"
+      url: "https://github.com/amuritna"
+    - name: "rss"
+      url: "/index.xml"
+
+  # math plugin
+  math:
+    enable: false
+    provider: katex
+
+  # diagram plugin
+  diagram:
+    enable: false
+    provider: mermaid
+
+  # comment plugin
+  comment:
+    enable: false
+    provider: giscus
+    # check out https://disqus.com/
+    disqus:
+      shortname: hugo-minima
+      # check out https://utteranc.es
+    utterances:
+      repo: mivinci/hugo-theme-minima
+      issueTerm: pathname
+      label: comment
+    # check out https://giscus.app
+    giscus: 
+      repo: mivinci/hugo-theme-minima
+      repoId: MDEwOlJlcG9zaXRvcnkzODcxMjM2NDU=
+      category: Comments
+      categoryId: DIC_kwDOFxMJvc4CScQm
+      mapping: pathname
+      inputPosition: buttom # bottom | top
+      reactions: true
+      metadata: false
+
+
+# menu.main is an array containing what is used as the navigator.
+menu:
+  main:
+    - identifier: tags
+      name: "Tags"
+      weight: 2
+    - identifier: series
+      name: "Series"
+      weight: 3
+
+# taxonomies defines ways to classify yout posts. Below are some presets that
+# most bloggers use, so you can replace them with whatever you like.
+taxonomies:
+  category: categories
+  tag: tags
+  series: series
+
+# markup.highlight has two keys set to make sure that the syntax highlighting
+# in your posts are rendered correctly, so do not edit them.
+markup:
+  highlight:
+    lineNos: true
+    noClasses: false
