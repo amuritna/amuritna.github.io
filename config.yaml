@@ -96,11 +96,11 @@ params:
 # menu.main is an array containing what is used as the navigator.
 menu:
   main:
-    - identifier: tags
-      name: "Tags"
+    - identifier: about
+      name: "About"
       weight: 2
-    - identifier: series
-      name: "Series"
+    - identifier: categories
+      name: "Categories"
       weight: 3
 
 # taxonomies defines ways to classify yout posts. Below are some presets that
@@ -108,7 +108,7 @@ menu:
 taxonomies:
   category: categories
   tag: tags
-  series: series
+  #series: series
 
 # markup.highlight has two keys set to make sure that the syntax highlighting
 # in your posts are rendered correctly, so do not edit them.
