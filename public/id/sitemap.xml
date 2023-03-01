@@ -2,6 +2,35 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://amuritna.github.io/id/</loc>
+    <lastmod>2023-03-01T08:54:53+07:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://amuritna.github.io/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="id"
+                href="https://amuritna.github.io/id/"
+                />
+  </url><url>
+    <loc>https://amuritna.github.io/id/posts/halo-dunia/</loc>
+    <lastmod>2023-03-01T08:54:53+07:00</lastmod>
+  </url><url>
+    <loc>https://amuritna.github.io/id/posts/</loc>
+    <lastmod>2023-03-01T08:54:53+07:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://amuritna.github.io/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="id"
+                href="https://amuritna.github.io/id/posts/"
+                />
+  </url><url>
     <loc>https://amuritna.github.io/id/categories/</loc>
     <xhtml:link
                 rel="alternate"
@@ -12,18 +41,6 @@
                 rel="alternate"
                 hreflang="id"
                 href="https://amuritna.github.io/id/categories/"
-                />
-  </url><url>
-    <loc>https://amuritna.github.io/id/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://amuritna.github.io/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="id"
-                href="https://amuritna.github.io/id/"
                 />
   </url><url>
     <loc>https://amuritna.github.io/id/series/</loc>
