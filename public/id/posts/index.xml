@@ -7,14 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© 2023 Emmanuella Rumanti</copyright>
-    <lastBuildDate>Wed, 01 Mar 2023 08:54:53 +0700</lastBuildDate><atom:link href="https://amuritna.github.io/id/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 25 Jul 2023 14:28:05 +0700</lastBuildDate><atom:link href="https://amuritna.github.io/id/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Halo Dunia</title>
-      <link>https://amuritna.github.io/id/posts/halo-dunia/</link>
-      <pubDate>Wed, 01 Mar 2023 08:54:53 +0700</pubDate>
+      <title>[Repost] Membaca dan Menulis File dengan Python</title>
+      <link>https://amuritna.github.io/id/posts/io-python/</link>
+      <pubDate>Tue, 25 Jul 2023 14:28:05 +0700</pubDate>
       
-      <guid>https://amuritna.github.io/id/posts/halo-dunia/</guid>
-      <description>halo halo dunia</description>
+      <guid>https://amuritna.github.io/id/posts/io-python/</guid>
+      <description>Tulisan ini aslinya dipublikasikan pada 23 Desember 2019 di website pribadi lama saya dan telah diposting ulang untuk keperluan pengarsipan.
+Saat Anda ingin menyimpan data, Anda bisa menggunakan variabel. Tapi “masa hidup” variabel hanyalah selama program tersebut berjalan — data variabel dihapus saat program berhenti.
+Bagaimana jika Anda ingin menyimpan sesuatu selama jangka yang lebih panjang, sehingga bahkan setelah Anda mematikan komputer Anda, datanya tidak terhapus? Sehingga Anda bisa mengakses lagi datanya lain hari?</description>
     </item>
     
   </channel>

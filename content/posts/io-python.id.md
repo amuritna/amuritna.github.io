@@ -1,7 +1,7 @@
 ---
 title: "[Repost] Membaca dan Menulis File dengan Python"
 date: 2023-07-25T14:28:05+07:00
-draft: true
+draft: false
 description: Tulisan saya untuk Hacktoberfest 2019.
 ---
 
