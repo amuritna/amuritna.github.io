@@ -34,7 +34,7 @@ params:
   # greet specifies greeting words.
   greet: Emmanuella Rumanti
   # subtitle speficies a subtitle displayed right after the site title.
-  subtitle: 
+  subtitle: Blog
   # switch specifies two emojis to be used as the button toggling color themes.
   switch: ["🌻", "🌼"]
   # defaultTheme specifies a default theme to be used.
