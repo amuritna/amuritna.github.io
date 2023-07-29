@@ -36,7 +36,7 @@ params:
   # subtitle speficies a subtitle displayed right after the site title.
   subtitle: Blog
   # switch specifies two emojis to be used as the button toggling color themes.
-  switch: ["🌻", "🌼"]
+  switch: ["<img src='https://github.com/amuritna/amuritna.github.io/blob/main/assets/led_off.png?raw=true' width='100px'>", "<img src='https://github.com/amuritna/amuritna.github.io/blob/main/assets/led_on.png?raw=true' width='100px'>"]
   # defaultTheme specifies a default theme to be used.
   # currently available options: light, dark, system.
   defaultTheme: system
