@@ -2,6 +2,8 @@
 title: "[Repost] Modular Origami"
 date: 2023-07-25T14:14:53+07:00
 draft: false
+categories: [repost, life]
+tags: [origami, hobby, pics]
 description: Kusudama as an analogy for an anthology.
 ---
 

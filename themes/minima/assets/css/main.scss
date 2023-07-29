@@ -30,6 +30,11 @@ body {
   transition-duration: 0.5s;
 }
 
+nav .ml-1 {
+  margin-left: 0.6em;
+  margin-right: 0.6em;
+}
+
 h1, h2, h3, .text-lg {
   font-family: var(--font-serif);
 }
