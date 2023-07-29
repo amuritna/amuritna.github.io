@@ -1,8 +1,10 @@
 .light {
-  --prime: #af175e;
+  --prime: #f170a1;
   --grid: #e1e1e1;
   --back: #fff;
-  --text: #222;
+  --text: #222227;
+  --colorizer: #2a8cb3;
+  --namedrop: #632b43;
 
   // code highlighting
   --code-back: #f6f8fa;
@@ -20,10 +22,12 @@
 }
 
 .dark {
-  --prime: #a73172;
-  --back: #130d0f;
-  --text: silver;
+  --prime: #e44c93;
+  --back: #1B2430;
+  --text: #babebe;
   --grid: #555;
+  --colorizer: rgb(4, 129, 247);
+  --namedrop: yellow;
 
   // code highlighting
   --code-back: #1d1d1d;

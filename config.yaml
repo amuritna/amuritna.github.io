@@ -18,23 +18,23 @@ languages:
     languageName: ID
     weight: 2
     author:
-      status: status bhs indo 🌍
+      status: 
       description: |
-        deskripsi bhs indo
+        deskripsi bhs indo Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     params:
       greet: Emmanuella Rumanti
 
 # author specifies your name, a slogon and your brief self-introduction.
 author:
   name: Emmanuella Rumanti
-  status: english status 🌍
+  status: 
   description: |
-    ablsdnflsndflknsdklfn in english
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 params:
   # greet specifies greeting words.
   greet: Emmanuella Rumanti
   # subtitle speficies a subtitle displayed right after the site title.
-  subtitle:
+  subtitle: 
   # switch specifies two emojis to be used as the button toggling color themes.
   switch: ["🌻", "🌼"]
   # defaultTheme specifies a default theme to be used.

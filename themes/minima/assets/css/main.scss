@@ -3,11 +3,12 @@
 @import "./atom.scss";
 @import "./md.scss";
 @import "./syntax.scss";
+@import url('https://fonts.googleapis.com/css2?family=Cardo&display=swap');
 
 :root {
   --max-w: 640px;
-  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-    Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --font-sans: 'Segoe UI', Roboto, Oxygen, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --font-serif: Cardo, serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -21,12 +22,20 @@ html {
 
 body {
   margin: 0 16px;
-  font-family: var(--font);
+  font-family: var(--font-sans);
   font-weight: 400;
   background-color: var(--back);
   color: var(--text);
   transition-property: background-color, border-color, color;
   transition-duration: 0.5s;
+}
+
+h1, h2, h3, .text-lg {
+  font-family: var(--font-serif);
+}
+
+.text-lg, .colorized {
+  color: var(--colorizer);
 }
 
 main {
