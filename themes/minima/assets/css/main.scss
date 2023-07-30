@@ -43,6 +43,11 @@ h1, h2, h3, .text-lg {
   color: var(--colorizer);
 }
 
+.color-subtle {
+  color: var(--subtle);
+  border-color: var(--subtle);
+}
+
 main {
   animation: showup 0.7s;
 }
