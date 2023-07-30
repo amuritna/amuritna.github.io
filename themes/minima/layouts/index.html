@@ -8,7 +8,7 @@
   <p class="mt-3 mb-3 home-intro">{{ .Site.Author.description | markdownify | safeHTML }}</p>
   {{ if eq .Paginator.PageNumber 1 }}
   <br/>
-  <hr class="color-subtle"/>
+  <hr/>
   <h3 class="mt-6 mb-4 text-2xl font-bold">{{ T "recent" }}</h3>
   {{ else }}
   <h3 class="mt-6 mb-4 text-2xl font-bold">{{ T "older" }}</h3>

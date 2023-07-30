@@ -43,9 +43,13 @@ h1, h2, h3, .text-lg {
   color: var(--colorizer);
 }
 
-.color-subtle, .mb-3 .ml-1, hr {
+.color-subtle, .mb-3 .ml-1 {
   color: var(--subtle);
+}
+
+hr {
   border-color: var(--subtle);
+  opacity: 0.2;
 }
 
 main {
