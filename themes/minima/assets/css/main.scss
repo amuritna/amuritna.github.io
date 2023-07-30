@@ -43,7 +43,7 @@ h1, h2, h3, .text-lg {
   color: var(--colorizer);
 }
 
-.color-subtle {
+.color-subtle, .mb-3 .ml-1, hr {
   color: var(--subtle);
   border-color: var(--subtle);
 }
