@@ -81,5 +81,31 @@
                 hreflang="en"
                 href="https://amuritna.github.io/tags/"
                 />
+  </url><url>
+    <loc>https://amuritna.github.io/subscribe/</loc>
+    <lastmod>2022-07-30T11:07:09+07:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="id"
+                href="https://amuritna.github.io/id/subscribe/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://amuritna.github.io/subscribe/"
+                />
+  </url><url>
+    <loc>https://amuritna.github.io/about/</loc>
+    <lastmod>2022-03-01T16:28:58+07:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="id"
+                href="https://amuritna.github.io/id/about/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://amuritna.github.io/about/"
+                />
   </url>
 </urlset>
