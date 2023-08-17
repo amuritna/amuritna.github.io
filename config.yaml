@@ -20,10 +20,13 @@ languages:
     author:
       status: 
       description: |
-        *deskripsi bhs indo* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Halo. Saya adalah mahasiswa Teknik Elektro yang sering terpesona oleh berbagai hal. Ketertarikan saya termasuk (tetapi tidak terbatas pada) proyek *open source*, pemrograman *low-level*, mikroprosesor, dan teknik komputer secara umum.
         \
         \
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Terkadang, saya menulis tentang eksplorasi, proyek, atau kehidupan saya. Terkadang dalam bahasa Inggris, terkadang dalam bhasa Indonesia. Halaman beranda untuk tiap bahasa dapat diakses via navigasi yang ada di kanan atas.
+        \
+        \
+        Untuk mengubah ke mode terang atau gelap, klik *icon* perkotaan yang ada di kiri atas.
     params:
       greet: Emmanuella Rumanti
 
@@ -32,7 +35,13 @@ author:
   name: Emmanuella Rumanti
   status: 
   description: |
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Hello. I'm an Electrical Engineering student who finds a lot of things fascinating. My interests include (but are not limited to) open source projects, low-level programming, microprocessors, and computer engineering in general. 
+    \
+    \
+    Sometimes I write about my explorations, projects, or life; sometimes in English, sometimes in Indonesian. The homepage for each language can be accessed via the top-right navigation.
+    \
+    \
+    To toggle between light and dark modes, click on the city icon on the top left.
 params:
   # greet specifies greeting words.
   greet: Emmanuella Rumanti
