@@ -19,14 +19,14 @@ languages:
     weight: 2
     author:
       status: 
-      description: |
-        Halo. Saya adalah mahasiswa Teknik Elektro yang sering terpesona oleh berbagai hal. Ketertarikan saya termasuk (tetapi tidak terbatas pada) proyek *open source*, pemrograman *low-level*, mikroprosesor, dan teknik komputer secara umum.
-        \
-        \
-        Terkadang, saya menulis tentang eksplorasi, proyek, atau kehidupan saya. Terkadang dalam bahasa Inggris, terkadang dalam bahasa Indonesia. Halaman beranda untuk tiap bahasa dapat diakses via navigasi yang ada di kanan atas.
-        \
-        \
-        Untuk mengubah ke mode terang atau gelap, klik *icon* perkotaan yang ada di kiri atas.
+      #description: |
+      #  Halo. Saya adalah mahasiswa Teknik Elektro yang sering terpesona oleh berbagai hal. Ketertarikan saya termasuk (tetapi tidak terbatas pada) proyek *open source*, pemrograman *low-level*, mikroprosesor, dan teknik komputer secara umum.
+      #  \
+      #  \
+      #  Terkadang, saya menulis tentang eksplorasi, proyek, atau kehidupan saya. Terkadang dalam bahasa Inggris, terkadang dalam bahasa Indonesia. Halaman beranda untuk tiap bahasa dapat diakses via navigasi yang ada di kanan atas.
+      #  \
+      #  \
+      #  Untuk mengubah ke mode terang atau gelap, klik *icon* perkotaan yang ada di kiri atas.
     params:
       greet: Emmanuella Rumanti
 
@@ -34,14 +34,14 @@ languages:
 author:
   name: Emmanuella Rumanti
   status: 
-  description: |
-    Hello. I'm an Electrical Engineering student who finds a lot of things fascinating. My interests include (but are not limited to) open source projects, low-level programming, microprocessors, and computer engineering in general. 
-    \
-    \
-    Sometimes I write about my explorations, projects, or life; sometimes in English, sometimes in Indonesian. The homepage for each language can be accessed via the top-right navigation.
-    \
-    \
-    To toggle between light and dark modes, click on the city icon on the top left.
+  #description: |
+    #Hello. I'm an Electrical Engineering student who finds a lot of things fascinating. My interests include (but are not limited to) open source projects, low-level programming, microprocessors, and computer engineering in general. 
+    #\
+    #\
+    #Sometimes I write about my explorations, projects, or life; sometimes in English, sometimes in Indonesian. The homepage for each language can be accessed via the top-right navigation.
+    #\
+    #\
+    #To toggle between light and dark modes, click on the city icon on the top left.
 params:
   # greet specifies greeting words.
   greet: Emmanuella Rumanti
