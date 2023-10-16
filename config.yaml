@@ -27,6 +27,7 @@ languages:
       #  \
       #  \
       #  Untuk mengubah ke mode terang atau gelap, klik *icon* perkotaan yang ada di kiri atas.
+      description: Halo. Halaman beranda untuk tiap bahasa dapat diakses via navigasi yang ada di kanan atas. Untuk mengubah ke mode terang atau gelap, klik *icon* perkotaan yang ada di kiri atas.
     params:
       greet: Emmanuella Rumanti
 
@@ -42,6 +43,7 @@ author:
     #\
     #\
     #To toggle between light and dark modes, click on the city icon on the top left.
+  description: Hello. The homepage for each language can be accessed via the top-right navigation. To toggle between light and dark modes, click on the city icon on the top left.
 params:
   # greet specifies greeting words.
   greet: Emmanuella Rumanti
