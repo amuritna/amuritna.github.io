@@ -1,9 +1,34 @@
 ---
 title: "About"
-date: 2022-03-01T16:28:58+07:00
+date: 2024-05-09
 draft: false
-description: About me.
 ---
 
-aldjflajdslkfnlasndflknln about (en)
+Hello! My name is Emmanuella Rumanti Tee [\[1\]](#notes), also known as amuritna [\[2\]](#notes).
 
+I am currently affliated with the School of Electrical Engineering and Informatics at [Institut Teknologi Bandung](https://en.wikipedia.org/wiki/Bandung_Institute_of_Technology), Indonesia, where I am in my last year of pursuing a B.S. in Electrical Engineering. 
+
+My current work  — my team's capstone design project — focuses on how we can secure voice communication on an untrusted device. Personally, I am in particular interested in exploring utilizations of the audio channel, end-to-end encryption, computation, and specialized hardware design.
+
+My other interests include computer engineering, programming, register-transfer level design, instruction set architecture, firmware, chip design, open source software, and the combination of the last two (e.g. open source silicon compilers!).
+
+In my free time, I also like to doodle on paper and play typing games (QWERTY layout). My personal record on Keymash is 150 WPM, and my high score on ZType is 5642 (wave 27)!
+
+&nbsp;
+
+Relevant links:
+* [Email](mailto:amuritna@gmail.com)
+* [LinkedIn](https://linkedin.com/in/emmanuella-rumanti/)
+* [GitHub](https://github.com/amuritna/)
+* [RSS feed for this website](/index.xml)
+
+&nbsp;
+
+&nbsp;
+
+### Notes
+**[1]** Since I started taking a Japanese class sometime ago, I also like to write as エンマヌエラ・ルマンティ・鄭. エンマ looks cooler than エマ and I like writing 鄭 instead of テ because the [Sino-Japanese reading](https://en.wikipedia.org/wiki/On%27yomi) for 鄭 is pretty much the same as the way my family pronounces Tee ([Zheng](https://en.wikipedia.org/wiki/Zheng_(surname))). 
+
+**[2]** Anagram for Arumanti, the slightly longer version of Rumanti. 
+
+&nbsp;
