@@ -19,15 +19,11 @@ languages:
     weight: 2
     author:
       status: 
-      #description: |
-      #  Halo. Saya adalah mahasiswa Teknik Elektro yang sering terpesona oleh berbagai hal. Ketertarikan saya termasuk (tetapi tidak terbatas pada) proyek *open source*, pemrograman *low-level*, mikroprosesor, dan teknik komputer secara umum.
-      #  \
-      #  \
-      #  Terkadang, saya menulis tentang eksplorasi, proyek, atau kehidupan saya. Terkadang dalam bahasa Inggris, terkadang dalam bahasa Indonesia. Halaman beranda untuk tiap bahasa dapat diakses via navigasi yang ada di kanan atas.
-      #  \
-      #  \
-      #  Untuk mengubah ke mode terang atau gelap, klik *icon* perkotaan yang ada di kiri atas.
-      description: Halo. Halaman beranda untuk tiap bahasa dapat diakses via navigasi yang ada di kanan atas. Untuk mengubah ke mode terang atau gelap, klik *icon* perkotaan yang ada di kiri atas.
+      description: |
+        Hai! Nama saya Emma. Saat ini saya adalah mahasiswa S-1 Teknik Elektro di Institut Teknologi Bandung. Sebagai mahasiswa tingkat akhir, saya sedang mengerjakan Tugas Akhir saya berupa *capstone design project*. Perkenalan lengkap saya dapat diakses [di sini](/about).
+        \
+        \
+        Ini adalah *website* pribadi saya yang tersedia dalam bahasa Inggris (EN) dan bahasa Indonesia (ID) - halaman beranda untuk keduanya dapat diakses menggunakan navigasi yang ada pada kanan-atas. Untuk menyalakan/mematikan mode *light* dan *dark*, klik *icon* kota di kiri-atas. Untuk berlangganan, dapat digunakan *feed* RSS.
     params:
       greet: Emmanuella Rumanti
 
@@ -35,20 +31,16 @@ languages:
 author:
   name: Emmanuella Rumanti
   status: 
-  #description: |
-    #Hello. I'm an Electrical Engineering student who finds a lot of things fascinating. My interests include (but are not limited to) open source projects, low-level programming, microprocessors, and computer engineering in general. 
-    #\
-    #\
-    #Sometimes I write about my explorations, projects, or life; sometimes in English, sometimes in Indonesian. The homepage for each language can be accessed via the top-right navigation.
-    #\
-    #\
-    #To toggle between light and dark modes, click on the city icon on the top left.
-  description: Hello. The homepage for each language can be accessed via the top-right navigation. To toggle between light and dark modes, click on the city icon on the top left.
+  description: | 
+    Hi! My name is Emma. I am an undergraduate Electrical Engineering student at Institut Teknologi Bandung, currently working on my capstone design project in my final year. My full introduction can be accessed [here](/about/).
+    \
+    \
+    This is my personal website and it is available in both English (EN) and Indonesian (ID) — the homepage for each language may be accessed via the navigation on the top-right. To toggle between light and dark modes, click on the city icon on the top left. To subscribe, an RSS feed is available.
 params:
   # greet specifies greeting words.
   greet: Emmanuella Rumanti
   # subtitle speficies a subtitle displayed right after the site title.
-  subtitle: Blog
+  subtitle: Personal Website
   # switch specifies two emojis to be used as the button toggling color themes.
   switch: ["🌃", "🌇"]
   # defaultTheme specifies a default theme to be used.
