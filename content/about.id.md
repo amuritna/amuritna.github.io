@@ -8,7 +8,7 @@ Halo! Nama saya Emmanuella Rumanti Tee [\[1\]](#catatan), atau juga dikenal seba
 
 Saya bisa dikontak [lewat e-mail](mailto:amuritna@gmail.com). Profil saya juga dapat ditemukan di [LinkedIn](https://linkedin.com/in/emmanuella-rumanti/) dan [GitHub](https://github.com/amuritna/).
 
-Saat ini, saya berafliasi dengan Sekolah Teknik Elektro dan Informatika (STEI) di Institut Teknologi Bandung, tempat saya kini menempuh tingkat akhir S-1 Teknik Elektro.
+Saat ini, saya berafliasi dengan Sekolah Teknik Elektro dan Informatika (STEI) di [Institut Teknologi Bandung](https://id.wikipedia.org/wiki/Institut_Teknologi_Bandung), tempat saya kini menempuh tingkat akhir S-1 Teknik Elektro.
 
 Pekerjaan saya saat ini, yaitu Tugas Akhir kelompok saya berupa *capstone design project*, fokus pada bagaimana komunikasi suara pada perangkat *untrusted* dapat diamankan. Saya pribadi terutama tertarik mengeksplorasi cara-cara memanfaatkan kanal suara, enkripsi *end-to-end*, komputasi terkait, dan perancangan *hardware* yang *specialized*. 
 
