@@ -23,7 +23,10 @@ languages:
         Hai! Nama saya Emma. Saat ini saya adalah mahasiswa S-1 Teknik Elektro di Institut Teknologi Bandung. Sebagai mahasiswa tingkat akhir, saya sedang mengerjakan Tugas Akhir saya berupa *capstone design project*. Perkenalan lengkap saya dapat diakses [di sini](/about).
         \
         \
-        Ini adalah *website* pribadi saya yang tersedia dalam bahasa Inggris (EN) dan bahasa Indonesia (ID) - halaman beranda untuk keduanya dapat diakses menggunakan navigasi yang ada pada kanan-atas. Untuk menyalakan/mematikan mode *light* dan *dark*, klik *icon* kota di kiri-atas. Untuk berlangganan, dapat digunakan *feed* RSS.
+        Ini adalah *website* pribadi saya yang tersedia dalam bahasa Inggris (EN) dan bahasa Indonesia (ID) - halaman beranda untuk keduanya dapat diakses menggunakan navigasi yang ada pada kanan-atas. Untuk menyalakan/mematikan mode *light* dan *dark*, klik *icon* kota di kiri-atas.
+        \
+        \
+        Untuk berlangganan, dapat digunakan *feed* RSS baik untuk [bahasa Inggris](/index.xml) maupun [bahasa Indonesia](/id/index.xml).
     params:
       greet: Emmanuella Rumanti
 
@@ -35,7 +38,10 @@ author:
     Hi! My name is Emma. I am an undergraduate Electrical Engineering student at Institut Teknologi Bandung, currently working on my capstone design project in my final year. My full introduction can be accessed [here](/about/).
     \
     \
-    This is my personal website and it is available in both English (EN) and Indonesian (ID) — the homepage for each language may be accessed via the navigation on the top-right. To toggle between light and dark modes, click on the city icon on the top left. To subscribe, an RSS feed is available.
+    This is my personal website and it is available in both English (EN) and Indonesian (ID) — the homepage for each language may be accessed via the navigation on the top-right. To toggle between light and dark modes, click on the city icon on the top left.
+    \
+    \
+    To subscribe, an RSS feed is available in both [English](/index.xml) and [Indonesian](/id/index.xml).
 params:
   # greet specifies greeting words.
   greet: Emmanuella Rumanti
