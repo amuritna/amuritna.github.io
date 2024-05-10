@@ -6,7 +6,9 @@ draft: false
 
 Hello! My name is Emmanuella Rumanti Tee [\[1\]](#notes), also known as amuritna [\[2\]](#notes).
 
-I am currently affliated with the School of Electrical Engineering and Informatics at [Institut Teknologi Bandung](https://en.wikipedia.org/wiki/Bandung_Institute_of_Technology), Indonesia, where I am in my last year of pursuing a B.S. in Electrical Engineering. 
+I can be contacted [via e-mail](mailto:amuritna@gmail.com). You can also find me on [LinkedIn](https://linkedin.com/in/emmanuella-rumanti/) and [GitHub](https://github.com/amuritna/).
+
+At the moment, I am affliated with the School of Electrical Engineering and Informatics at [Institut Teknologi Bandung](https://en.wikipedia.org/wiki/Bandung_Institute_of_Technology), Indonesia, where I am in my last year of pursuing a B.S. in Electrical Engineering. 
 
 My current work  — my team's capstone design project — focuses on how we can secure voice communication on an untrusted device. Personally, I am in particular interested in exploring utilizations of the audio channel, end-to-end encryption, computation, and specialized hardware design.
 
@@ -16,18 +18,14 @@ In my free time, I also like to doodle on paper and play typing games (QWERTY la
 
 &nbsp;
 
-Relevant links:
-* [Email](mailto:amuritna@gmail.com)
-* [LinkedIn](https://linkedin.com/in/emmanuella-rumanti/)
-* [GitHub](https://github.com/amuritna/)
-* [RSS feed for this website](/index.xml)
-
 &nbsp;
 
 &nbsp;
 
 ### Notes
-**[1]** Since I started taking a Japanese class sometime ago, I also like to write as エンマヌエラ・ルマンティ・鄭. エンマ looks cooler than エマ and I like writing 鄭 instead of テ because the [Sino-Japanese reading](https://en.wikipedia.org/wiki/On%27yomi) for 鄭 is pretty much the same as the way my family pronounces Tee ([Zheng](https://en.wikipedia.org/wiki/Zheng_(surname))). 
+**[1]** Since I started taking a Japanese class sometime ago, I also like to write it as エンマヌエラ・ルマンティ・鄭.
+
+エンマ looks cooler than エマ and I like writing 鄭 instead of テ because the [Sino-Japanese reading](https://en.wikipedia.org/wiki/On%27yomi) for 鄭 is pretty much the same as the way my family pronounces Tee ([Zheng](https://en.wikipedia.org/wiki/Zheng_(surname))). 
 
 **[2]** Anagram for Arumanti, the slightly longer version of Rumanti. 
 
