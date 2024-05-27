@@ -1,2 +1,2 @@
-# amuritna.github.io
+# Emmanuella Rumanti @ amuritna.github.io
 Hi! This is my personal website, available [here](https://amuritna.github.io)
