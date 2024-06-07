@@ -23,9 +23,7 @@ Saat ada waktu luang, saya juga suka corat-coret di kertas dan memainkan *typing
 &nbsp;
 
 ### Catatan
-**[1]** Sejak saya mulai mengambil kelas Bahasa Jepang beberapa waktu yang lalu, saya juga suka menulisnya sebagai エンマヌエラ・ルマンティ・鄭.
-
-エンマ menurut saya terlibat lebih keren daripada エマ, dan saya suka menulis 鄭 untuk menggantikan テ karena [pembacaan Sino-Jepang](https://en.wikipedia.org/wiki/On%27yomi) untuk 鄭 sama dengan bagaimana keluarga saya menyebut Tee ([Zheng](https://en.wikipedia.org/wiki/Zheng_(surname))). 
+**[1]** [Tee](https://en.wikipedia.org/wiki/Tee_(surname)) adalah romanisasi dari [郑](https://en.wikipedia.org/wiki/Zheng_(surname)). Pengejaan ini berdasarkan pelafalan [Hokkien](https://en.wikipedia.org/wiki/Hokkien).
 
 **[2]** Anagram untuk Arumanti, yang adalah versi sedikit lebih panjang dari Rumanti.
 

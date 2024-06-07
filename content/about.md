@@ -23,9 +23,7 @@ In my free time, I also like to doodle on paper and play typing games (QWERTY la
 &nbsp;
 
 ### Notes
-**[1]** Since I started taking a Japanese class sometime ago, I also like to write it as エンマヌエラ・ルマンティ・鄭.
-
-エンマ looks cooler than エマ and I like writing 鄭 instead of テ because the [Sino-Japanese reading](https://en.wikipedia.org/wiki/On%27yomi) for 鄭 is pretty much the same as the way my family pronounces Tee ([Zheng](https://en.wikipedia.org/wiki/Zheng_(surname))). 
+**[1]** [Tee](https://en.wikipedia.org/wiki/Tee_(surname)) is a romanization of [郑](https://en.wikipedia.org/wiki/Zheng_(surname)), spelled according to its [Hokkien](https://en.wikipedia.org/wiki/Hokkien) pronunciation.
 
 **[2]** Anagram for Arumanti, the slightly longer version of Rumanti. 
 
