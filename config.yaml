@@ -114,12 +114,9 @@ menu:
     - identifier: categories
       name: "Categories"
       weight: 3
-    - identifier: tags
-      name: "Tags"
-      weight: 4
-    #- identifier: subscribe
-    #  name: "Subscribe"
-    #  weight: 3
+#    - identifier: tags
+#      name: "Tags"
+#      weight: 4
 
 # taxonomies defines ways to classify yout posts. Below are some presets that
 # most bloggers use, so you can replace them with whatever you like.
