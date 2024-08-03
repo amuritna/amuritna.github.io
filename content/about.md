@@ -4,7 +4,7 @@ date: 2024-05-09
 draft: false
 ---
 
-Hello! My name is Emmanuella Rumanti Tee [\[1\]](#notes), also known as amuritna [\[2\]](#notes).
+Hello! My name is Emmanuella Rumanti, also known as amuritna [\[1\]](#notes).
 
 I can be contacted [via e-mail](mailto:amuritna@gmail.com). You can also find me on [LinkedIn](https://linkedin.com/in/emmanuella-rumanti/) and [GitHub](https://github.com/amuritna/).
 
@@ -23,8 +23,7 @@ In my free time, I also like to doodle on paper and play typing games (QWERTY la
 &nbsp;
 
 ### Notes
-**[1]** [Tee](https://en.wikipedia.org/wiki/Tee_(surname)) is a romanization of [郑](https://en.wikipedia.org/wiki/Zheng_(surname)), spelled according to its [Hokkien](https://en.wikipedia.org/wiki/Hokkien) pronunciation.
 
-**[2]** Anagram for Arumanti, the slightly longer version of Rumanti. 
+**[1]** Anagram for Arumanti, the slightly longer version of Rumanti. 
 
 &nbsp;

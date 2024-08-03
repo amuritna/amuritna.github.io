@@ -4,7 +4,7 @@ date: 2024-05-10
 draft: false
 ---
 
-Halo! Nama saya Emmanuella Rumanti Tee [\[1\]](#catatan), atau juga dikenal sebagai amuritna [\[2\]](#notes).
+Halo! Nama saya Emmanuella Rumanti, atau juga dikenal sebagai amuritna [\[1\]](#notes).
 
 Saya bisa dikontak [lewat e-mail](mailto:amuritna@gmail.com). Profil saya juga dapat ditemukan di [LinkedIn](https://linkedin.com/in/emmanuella-rumanti/) dan [GitHub](https://github.com/amuritna/).
 
@@ -23,8 +23,7 @@ Saat ada waktu luang, saya juga suka corat-coret di kertas dan memainkan *typing
 &nbsp;
 
 ### Catatan
-**[1]** [Tee](https://en.wikipedia.org/wiki/Tee_(surname)) adalah romanisasi dari [郑](https://en.wikipedia.org/wiki/Zheng_(surname)). Pengejaan ini berdasarkan pelafalan [Hokkien](https://en.wikipedia.org/wiki/Hokkien).
 
-**[2]** Anagram untuk Arumanti, yang adalah versi sedikit lebih panjang dari Rumanti.
+**[1]** Anagram untuk Arumanti, yang adalah versi sedikit lebih panjang dari Rumanti.
 
 &nbsp;
