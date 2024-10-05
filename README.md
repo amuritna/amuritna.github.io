@@ -1,6 +1,10 @@
 # Emmanuella Rumanti @ amuritna.github.io
 Hi! This is my personal website, available [here](https://amuritna.github.io)
 
+.
+.
+.
+
 ## GitHub Stats
 These things are fun but I don't want/need them to be displayed *directly* on my profile.
 
@@ -11,3 +15,13 @@ These things are fun but I don't want/need them to be displayed *directly* on my
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=amuritna&theme=transparent)](https://github.com/anuraghazra/github-readme-stats)
 
 <img src="https://github-profile-trophy.vercel.app/?username=amuritna&no-bg=true&theme=juicyfresh" />
+
+[![GitHub Profile Summary Cards](http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=amuritna&theme=transparent)](https://github.com/vn7n24fzkq/github-profile-summary-cards)
+
+[![GitHub Profile Summary Cards](http://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=amuritna&theme=transparent)](https://github.com/vn7n24fzkq/github-profile-summary-cards)
+
+[![GitHub Profile Summary Cards](http://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=amuritna&theme=transparent)](https://github.com/vn7n24fzkq/github-profile-summary-cards)
+
+![github-stats](https://stats.dooboo.io/api/github-stats-advanced?login=amuritna)
+
+![github-trophies](https://stats.dooboo.io/api/github-trophies?login=amuritna)
