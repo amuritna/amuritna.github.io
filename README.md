@@ -20,7 +20,7 @@ These things are fun but I don't want/need them to be displayed *directly* on my
 
 [![GitHub Profile Summary Cards](http://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=amuritna&theme=transparent)](https://github.com/vn7n24fzkq/github-profile-summary-cards)
 
-[![GitHub Profile Summary Cards](http://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=amuritna&theme=transparent)](https://github.com/vn7n24fzkq/github-profile-summary-cards)
+[![GitHub Profile Summary Cards](http://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=amuritna&theme=transparent&utcOffset=7)](https://github.com/vn7n24fzkq/github-profile-summary-cards)
 
 ![github-stats](https://stats.dooboo.io/api/github-stats-advanced?login=amuritna)
 
