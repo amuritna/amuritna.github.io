@@ -35,6 +35,7 @@ languages:
   # to hide "de" from navigation:
   # uncomment, build (to build the German part of the website),
   # comment, then build again (to remove from navigation; German part of website remains)
+  # do this every time new content is added/updated (new posts, etc)
   #de:
   #  languageName: DE
   #  weight: 3
