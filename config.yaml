@@ -32,6 +32,18 @@ languages:
         Untuk berlangganan, dapat digunakan *feed* RSS baik untuk [bahasa Inggris](/index.xml) maupun [bahasa Indonesia](/id/index.xml).
     params:
       greet: Emmanuella Rumanti
+  # to hide "de" from navigation:
+  # uncomment, build (to build the German part of the website),
+  # comment, then build again (to remove from navigation; German part of website remains)
+  #de:
+  #  languageName: DE
+  #  weight: 3
+  #  author:
+  #    status: 
+  #    description: |
+  #      Hallo! Sie haben einen geheimen Teil der Website entdeckt!
+  #  params:
+  #    greet: Emmanuella Rumanti
 
 # author specifies your name, a slogon and your brief self-introduction.
 author:
