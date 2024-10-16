@@ -27,11 +27,6 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="de"
-                href="https://amuritna.github.io/de/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="en"
                 href="https://amuritna.github.io/categories/"
                 />
@@ -42,11 +37,6 @@
                 rel="alternate"
                 hreflang="id"
                 href="https://amuritna.github.io/id/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="de"
-                href="https://amuritna.github.io/de/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -75,11 +65,6 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="de"
-                href="https://amuritna.github.io/de/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="en"
                 href="https://amuritna.github.io/posts/"
                 />
@@ -103,11 +88,6 @@
                 rel="alternate"
                 hreflang="id"
                 href="https://amuritna.github.io/id/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="de"
-                href="https://amuritna.github.io/de/tags/"
                 />
     <xhtml:link
                 rel="alternate"
