@@ -1,7 +1,6 @@
 ---
 title: "Tentang"
 date: 2024-05-10
-draft: false
 ---
 
 Halo! Nama saya Emmanuella Rumanti, atau juga dikenal sebagai amuritna [\[1\]](#notes). Saya bisa dikontak [lewat e-mail](mailto:amuritna@gmail.com). Profil saya juga dapat ditemukan di [LinkedIn](https://linkedin.com/in/emmanuella-rumanti/) dan [GitHub](https://github.com/amuritna/).
