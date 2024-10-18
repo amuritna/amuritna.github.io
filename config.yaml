@@ -15,30 +15,12 @@ languages:
     languageName: EN
     weight: 1
     author_desc: | 
-      Hi! My name is Emma. I am an undergraduate Electrical Engineering student at [Institut Teknologi Bandung](https://en.wikipedia.org/wiki/Bandung_Institute_of_Technology).
-      \
-      \
-      My interests include [digital electronics](https://en.wikipedia.org/wiki/Digital_electronics), [FPGAs](https://en.wikipedia.org/wiki/Field-programmable_gate_array), [VLSI](https://en.wikipedia.org/wiki/Very-large-scale_integration), and the many other facets of [hardware design](https://en.wikipedia.org/wiki/Integrated_circuit_design). As a student in my final year of study, I am currently working on designing specialized hardware for audio cryptography as a part of my capstone project. 
-      \
-      \
-      This is my personal website and it is available in both English (EN) and Indonesian (ID) — the homepage for each language may be accessed via the navigation on the top-right. To toggle between light and dark modes, click on the city icon on the top left.
-      \
-      \
-      To subscribe, an RSS feed is available in both [English](/index.xml) and [Indonesian](/id/index.xml).
+      Hi! My name is Emma. I am an undergraduate Electrical Engineering student at [Institut Teknologi Bandung](https://en.wikipedia.org/wiki/Bandung_Institute_of_Technology). My interests include [chip design](https://en.wikipedia.org/wiki/Integrated_circuit_design) and [digital electronics](https://en.wikipedia.org/wiki/Digital_electronics).
   id:
     languageName: ID
     weight: 2
     author_desc: |
-        Hai! Nama saya Emma. Saat ini saya adalah mahasiswa S-1 Teknik Elektro di [Institut Teknologi Bandung](https://en.wikipedia.org/wiki/Bandung_Institute_of_Technology). 
-        \
-        \
-        Ketertarikan saya antara lain adalah [elektronika digital](https://en.wikipedia.org/wiki/Digital_electronics), [FPGA](https://en.wikipedia.org/wiki/Field-programmable_gate_array), [VLSI](https://en.wikipedia.org/wiki/Very-large-scale_integration), serta berbagai sisi lain [perancangan *hardware*](https://en.wikipedia.org/wiki/Integrated_circuit_design). Sebagai mahasiswa tingkat akhir, saya sedang mengerjakan perancangan *specialized hardware* untuk kriptografi audio sebagai bagian dari Tugas Akhir saya berupa *capstone project*. 
-        \
-        \
-        Ini adalah *website* pribadi saya yang tersedia dalam bahasa Inggris (EN) dan bahasa Indonesia (ID) - halaman beranda untuk keduanya dapat diakses menggunakan navigasi yang ada pada kanan-atas. Untuk menyalakan/mematikan mode *light* dan *dark*, klik *icon* kota di kiri-atas.
-        \
-        \
-        Untuk berlangganan, dapat digunakan *feed* RSS baik untuk [bahasa Inggris](/index.xml) maupun [bahasa Indonesia](/id/index.xml).
+        Hai! Nama saya Emma. Saat ini saya adalah mahasiswa S-1 Teknik Elektro di [Institut Teknologi Bandung](https://en.wikipedia.org/wiki/Bandung_Institute_of_Technology). Saya tertarik [perancangan chip](https://en.wikipedia.org/wiki/Integrated_circuit_design) dan [elektronika digital](https://en.wikipedia.org/wiki/Digital_electronics).
     params:
       greet: Emmanuella Rumanti
   # to hide "de" from navigation:

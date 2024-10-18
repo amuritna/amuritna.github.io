@@ -4,17 +4,13 @@ date: 2024-05-09
 draft: false
 ---
 
-Hello! My name is Emmanuella Rumanti, also known as amuritna [\[1\]](#notes).
+Hello! My name is Emmanuella Rumanti, also known as amuritna [\[1\]](#notes). I can be contacted [via e-mail](mailto:amuritna@gmail.com). You can also find me on [LinkedIn](https://linkedin.com/in/emmanuella-rumanti/) and [GitHub](https://github.com/amuritna/).
 
-I can be contacted [via e-mail](mailto:amuritna@gmail.com). You can also find me on [LinkedIn](https://linkedin.com/in/emmanuella-rumanti/) and [GitHub](https://github.com/amuritna/).
+This is my personal website and it is available in both English (EN) and Indonesian (ID) — the homepage for each language may be accessed via the navigation on the top-right. To toggle between light and dark modes, click on the city icon on the top left. To subscribe, an RSS feed is available in both [English](/index.xml) and [Indonesian](/id/index.xml).
 
-At the moment, I am affliated with the School of Electrical Engineering and Informatics at [Institut Teknologi Bandung](https://en.wikipedia.org/wiki/Bandung_Institute_of_Technology), Indonesia, where I am in my last year of pursuing a B.S. in Electrical Engineering. 
+At the moment, I am affliated with the School of Electrical Engineering and Informatics at [Institut Teknologi Bandung](https://en.wikipedia.org/wiki/Bandung_Institute_of_Technology), Indonesia, where I am in my last year of pursuing a B.S. in Electrical Engineering. My current work  — my team's capstone design project — focuses on the design of specialized hardware to secure voice communication on an untrusted device. 
 
-My current work  — my team's capstone design project — focuses on how we can secure voice communication on an untrusted device. Personally, I am in particular interested in exploring utilizations of the audio channel, end-to-end encryption, computation, and specialized hardware design.
-
-My other interests include computer engineering, programming, register-transfer level design, instruction set architecture, firmware, chip design, open source software, and the combination of the last two (e.g. open source silicon compilers!).
-
-In my free time, I also like to doodle on paper and play typing games (QWERTY layout). My personal record on Keymash is 150 WPM, and my high score on ZType is 5642 (wave 27)!
+My other interests include computer engineering, programming, register-transfer level design, instruction set architecture, firmware, chip design, open source software, and the combination of the last two (e.g. open source silicon compilers!). 
 
 &nbsp;
 
