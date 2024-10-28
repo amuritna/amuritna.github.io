@@ -38,18 +38,6 @@ languages:
 # author specifies your name, a slogon and your brief self-introduction.
 author:
   name: Emmanuella Rumanti
-  status: 
-  description: | 
-    Hi! My name is Emma. I am an undergraduate Electrical Engineering student at [Institut Teknologi Bandung](https://en.wikipedia.org/wiki/Bandung_Institute_of_Technology).
-    \
-    \
-    My interests include [digital electronics](https://en.wikipedia.org/wiki/Digital_electronics), [FPGAs](https://en.wikipedia.org/wiki/Field-programmable_gate_array), [VLSI](https://en.wikipedia.org/wiki/Very-large-scale_integration), and the many other facets of [hardware design](https://en.wikipedia.org/wiki/Integrated_circuit_design). As a student in my final year of study, I am currently working on designing specialized hardware for audio cryptography as a part of my capstone project. 
-    \
-    \
-    This is my personal website and it is available in both English (EN) and Indonesian (ID) — the homepage for each language may be accessed via the navigation on the top-right. To toggle between light and dark modes, click on the city icon on the top left.
-    \
-    \
-    To subscribe, an RSS feed is available in both [English](/index.xml) and [Indonesian](/id/index.xml).
 params:
   # greet specifies greeting words.
   greet: Emmanuella Rumanti

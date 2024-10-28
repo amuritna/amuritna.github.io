@@ -2,8 +2,8 @@
 title: "Presenting MATLAB Figures in a Programmatically Generated HTML Document"
 date: 2024-10-28
 draft: false
-categories: [notes]
-tags: [matlab]
+categories: [notes, technical]
+tags: [matlab, code]
 description: fprintf, exportgraphics, and taking PDF conversions into consideration.
 ---
 
