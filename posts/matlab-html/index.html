@@ -1,0 +1,189 @@
+<!doctype html><html lang=en><head><meta name=google-site-verification content="_WiKfJK12JC0hTdF6dg1Hc9bFpl8ZvdZHSX-JYD2yTQ"><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta property="og:url" content="https://amuritna.github.io/posts/matlab-html/"><meta property="og:site_name" content="Emmanuella Rumanti"><meta property="og:title" content="Presenting MATLAB Figures in a Programmatically Generated HTML Document"><meta property="og:description" content="fprintf, exportgraphics, and taking PDF conversions into consideration."><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2024-10-28T00:00:00+00:00"><meta property="article:modified_time" content="2024-10-28T00:00:00+00:00"><meta property="article:tag" content="Matlab"><meta name=twitter:card content="summary"><meta name=twitter:title content="Presenting MATLAB Figures in a Programmatically Generated HTML Document"><meta name=twitter:description content="fprintf, exportgraphics, and taking PDF conversions into consideration."><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#262d33"><title>Emmanuella Rumanti - Presenting MATLAB Figures in a Programmatically Generated HTML Document
+</title><link rel="shortcut icon" href=/favicon.ico type=image/x-icon><link rel=stylesheet href=/minima.1730133480.css><script defer type=text/javascript src=/minima.1730133480.js></script></head><script>let default_theme=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";try{const e=localStorage.getItem("theme");e&&(default_theme=e),localStorage.setItem("theme",default_theme),window.minima_theme=default_theme,document.querySelector("html").classList.add(default_theme)}catch(e){console.error(e)}</script><body><header class="mt-3 mb-6"><div class="container mx-auto"><nav class="flex justify-between items-center"><div class="flex items-center"><div id=theme-switch class="text-3xl cursor-pointer">🌇</div></div><ul class="flex items-center font-medium
+whitespace-nowrap overflow-x-auto overflow-y-hidden"><li class="ml-1 mr-1"><a href=/about>About</a></li><li class="ml-1 mr-1"><a href=/categories>Categories</a></li></ul><ul class="flex item-center text-sm font-bold"><li class=ml-2><a href=https://amuritna.github.io/>EN</a></li><li class=ml-2><a href=https://amuritna.github.io/id/>ID</a></li></ul></nav></div></header><div class="container mx-auto"><h1 class="text-4xl font-extrabold mt-6 mb-6">Presenting MATLAB Figures in a Programmatically Generated HTML Document</h1><div class="mb-3 text-sm flex justify-between"><div>Post at &mdash; Oct 28, 2024</div><div><a class=ml-1 href=/tags/matlab>#matlab</a></div></div><main class=mb-8><p>fprintf, exportgraphics, and taking PDF conversions into consideration.</p><article class=md><hr><p>As my projects progressed, the number of MATLAB figures to deal with at a time began to go past twenty, and I started developed frustration with MATLAB&rsquo;s default way of arranging and displaying figures.</p><p>Here are some of them:</p><ul><li>Each chart is limited by the size of the figure window, and each figure window is limited by the size of the device screen.</li><li>Therefore, to be able to display more figures, more windows have to launched. I started to feel messy once I started dealing with dozens of figures at a time.</li><li>Individual figures cannot be wider or longer than device screen width or height, respectively.</li><li>Having to manually close or drag around the figure windows every time I re-run the script.</li><li>Most importantly: You can show charts side-by-side in the same window — using subplot or the newer tiledlayout — but control over layout is limited.<ul><li>For instance, tile spacing only has four options: <code>loose</code>, <code>compact</code>, <code>tight</code>, <code>none</code> (and <code>none</code> does not really <em>feel</em> like &ldquo;no margins&rdquo;, for me).</li></ul></li></ul><p>Since I felt that it was beginning to affect my work in a less ideal way, I began to wonder about the alternatives. What came to mind afterwards was programmatically exporting all the figures created and accessing them using a different application — but we can still go further.</p><p>Using MATLAB to &ldquo;programmatically&rdquo; export results and generate new files is nothing new, so there was that. The <a href=https://www.mathworks.com/help/rptgen/>MATLAB Report Generator</a> supports the automatic creation of PDF, Word, PowerPoint, and HTML documents. However, since my primary concern was (lack of) control over layout, I then thought of basic unstyled HTML and the idea of setting up the boilerplate myself. A simple not-particularly-pretty HTML document would be simple to set up, so I became interested in implementing my own generator using native functions.</p><p>An additional benefit of using HTML documents was that it meant it would not require an additional add-on, which makes it easier for when I (or people I work) with have to access the code from other devices. Conversion of simple &ldquo;bare-bones&rdquo; webpages to PDF are also fast and easy, which would come in handy for presenting my data to my advisor or collaborators.</p><p>The following are my notes on this little idea.</p><hr><h2 id=exporting-graphics-with-exportgraphics>Exporting graphics with <code>exportgraphics</code></h2><p>To export figures, <a href=https://www.mathworks.com/help/matlab/ref/exportgraphics.html>exportgraphics</a> is the way. (You can also use it to automatically produce PDF documents containing only graphics.)</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-matlab data-lang=matlab><span class=line><span class=cl><span class=n>f</span> <span class=p>=</span> <span class=n>figure</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=n>plot</span><span class=p>(</span><span class=n>filter1_output</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=n>title</span><span class=p>(</span><span class=s>&#39;Filter 1 Output&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>exportgraphics</span><span class=p>(</span><span class=n>f</span><span class=p>,</span> <span class=s>&#39;img_filter1_output.png&#39;</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><p>Control over padding, height, and width is available for MATLAB Online. I use the offline version of MATLAB for my current work, however, and adjust image sizes using the figure&rsquo;s <a href=https://www.mathworks.com/help/matlab/ref/matlab.ui.figure-properties.html>position parameter</a>.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-matlab data-lang=matlab><span class=line><span class=cl><span class=n>f</span> <span class=p>=</span> <span class=n>figure</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=n>f</span><span class=p>.</span><span class=n>Position</span><span class=p>(</span><span class=mi>3</span><span class=p>:</span><span class=mi>4</span><span class=p>)</span> <span class=p>=</span> <span class=p>[</span><span class=mi>880</span> <span class=mi>150</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=n>plot</span><span class=p>(</span><span class=n>filter1_output</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=n>title</span><span class=p>(</span><span class=s>&#39;Filter 1 Output&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>exportgraphics</span><span class=p>(</span><span class=n>f</span><span class=p>,</span> <span class=s>&#39;img_filter1_output.png&#39;</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><p>When iteratively generating and exporting images in a loop, the iterator can be combined with the handle to ensure each generated image has a separate filename:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-matlab data-lang=matlab><span class=line><span class=cl><span class=k>for</span> <span class=nb>i</span> <span class=p>=</span> <span class=mi>1</span><span class=p>:</span><span class=n>N</span>
+</span></span><span class=line><span class=cl>    <span class=n>f</span><span class=p>(</span><span class=nb>i</span><span class=p>)</span> <span class=p>=</span> <span class=n>figure</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>f</span><span class=p>(</span><span class=nb>i</span><span class=p>).</span><span class=n>Position</span><span class=p>(</span><span class=mi>3</span><span class=p>:</span><span class=mi>4</span><span class=p>)</span> <span class=p>=</span> <span class=p>[</span><span class=mi>880</span> <span class=mi>150</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>    <span class=n>plot</span><span class=p>(</span><span class=n>filter_outputs</span><span class=p>(</span><span class=nb>i</span><span class=p>,:));</span>
+</span></span><span class=line><span class=cl>    <span class=n>title</span><span class=p>([</span><span class=s>&#39;Filter  &#39;</span><span class=p>,</span> <span class=n>num2str</span><span class=p>(</span><span class=nb>i</span><span class=p>),</span> <span class=s>&#39; Output&#39;</span><span class=p>]);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>exportgraphics</span><span class=p>(</span><span class=n>f</span><span class=p>(</span><span class=mi>1</span><span class=p>),</span> <span class=p>[</span><span class=s>&#39;img_filter_&#39;</span><span class=p>,</span> <span class=n>num2str</span><span class=p>(</span><span class=nb>i</span><span class=p>),</span> <span class=s>&#39;_output.png&#39;</span><span class=p>]);</span>
+</span></span></code></pre></td></tr></table></div></div><hr><h2 id=writing-new-html-document-files-using-fopen--fprintf>Writing new HTML document files using <code>fopen</code> + <code>fprintf</code></h2><p>Basically &mldr;</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-matlab data-lang=matlab><span class=line><span class=cl><span class=n>fileID</span> <span class=p>=</span> <span class=n>fopen</span><span class=p>(</span><span class=s>&#39;hello.html&#39;</span><span class=p>,</span><span class=s>&#39;w&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>fprintf</span><span class=p>(</span><span class=n>fileID</span><span class=p>,</span> <span class=s>&#39;&lt;h1&gt;Hello, world!&lt;/h1&gt;&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>fclose</span><span class=p>(</span><span class=n>fileID</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><hr><h2 id=generating-a-boilerplate-html-document>Generating a Boilerplate HTML Document</h2><p>This is the template I eventually came to use multiple times.</p><p>Initially, I thought there was the possibility of me anding having to spend more time doing the &ldquo;automation&rdquo; than I would have had I done things manually (or in this case, the default way). Every time, however, it turned out I only need to copy-paste this boilerplate over and over again.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-matlab data-lang=matlab><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c>%%%%%% DOCUMENT SETUP %%%%%%</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>fileID</span> <span class=p>=</span> <span class=n>fopen</span><span class=p>(</span><span class=s>&#39;experiment_3_a_results.html&#39;</span><span class=p>,</span> <span class=s>&#39;w&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=n>title</span> <span class=p>=</span> <span class=n>sprintf</span><span class=p>(</span><span class=s>&#39;Experiment 3 Results&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=n>h1</span> <span class=p>=</span> <span class=n>sprintf</span><span class=p>(</span><span class=s>&#39;Experiment 3: Results&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=n>subtitle</span> <span class=p>=</span> <span class=n>sprintf</span><span class=p>(</span><span class=s>&#39;Version A&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>document_start</span> <span class=p>=</span> <span class=n>sprintf</span><span class=p>([</span> <span class=c>... </span>
+</span></span><span class=line><span class=cl>    <span class=s>&#39;&lt;!DOCTYPE html&gt;&#39;</span> <span class=c>...</span>
+</span></span><span class=line><span class=cl>    <span class=s>&#39;&lt;html&gt;&#39;</span> <span class=c>...</span>
+</span></span><span class=line><span class=cl>        <span class=s>&#39;&lt;head&gt;&#39;</span> <span class=c>...</span>
+</span></span><span class=line><span class=cl>            <span class=s>&#39;&lt;title&gt;&#39;</span><span class=p>,</span> <span class=n>title</span><span class=p>,</span> <span class=s>&#39;&lt;/title&gt;&#39;</span> <span class=c>...</span>
+</span></span><span class=line><span class=cl>        <span class=s>&#39;&lt;/head&gt;&#39;</span> <span class=c>...</span>
+</span></span><span class=line><span class=cl>        <span class=s>&#39;&lt;body&gt;&#39;</span> <span class=c>...</span>
+</span></span><span class=line><span class=cl>        <span class=s>&#39;&lt;center&gt;&#39;</span>
+</span></span><span class=line><span class=cl><span class=p>]);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>document_heading</span> <span class=p>=</span> <span class=n>sprintf</span><span class=p>([</span> <span class=c>...</span>
+</span></span><span class=line><span class=cl>    <span class=s>&#39;&lt;h1&gt;&#39;</span><span class=p>,</span> <span class=n>h1</span><span class=p>,</span> <span class=s>&#39;&lt;/h1&gt;&#39;</span> <span class=c>...</span>
+</span></span><span class=line><span class=cl>    <span class=s>&#39;&lt;p&gt;&#39;</span><span class=p>,</span> <span class=n>subtitle</span><span class=p>,</span> <span class=s>&#39;&lt;/p&gt;&#39;</span> <span class=c>...</span>
+</span></span><span class=line><span class=cl>    <span class=s>&#39;&lt;br/&gt;&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=p>]);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>document_end</span> <span class=p>=</span> <span class=n>sprintf</span><span class=p>([</span> <span class=c>...</span>
+</span></span><span class=line><span class=cl>        <span class=s>&#39;&lt;/body&gt;&#39;</span> <span class=c>...</span>
+</span></span><span class=line><span class=cl>        <span class=s>&#39;&lt;/center&gt;&#39;</span> <span class=c>...</span>
+</span></span><span class=line><span class=cl>    <span class=s>&#39;&lt;/html&gt;&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=p>]);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>fprintf</span><span class=p>(</span><span class=n>fileID</span><span class=p>,</span> <span class=n>document_start</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=n>fprintf</span><span class=p>(</span><span class=n>fileID</span><span class=p>,</span> <span class=n>document_heading</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c>%%%%%% COMPUTE RESULTS &amp; PLOT %%%%%%</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c>% exportgraphics(plot_handle(i), [&#39;plot_&#39;, num2str(i), &#39;.png&#39;]);</span>
+</span></span><span class=line><span class=cl><span class=c>% fprintf(fileID, [&#39;img src=&#34;plot_&#39;, num2str(i), &#39;.png&#34; width=&#34;880px&#34;/&gt;&lt;br/&gt;&#39;]);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c>%%%%%% END DOCUMENT %%%%%%</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>fprintf</span><span class=p>(</span><span class=n>fileID</span><span class=p>,</span> <span class=n>document_end</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=n>fclose</span><span class=p>(</span><span class=n>fileID</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><p>A shorter, but less readable, version:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-matlab data-lang=matlab><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c>%%%%%% DOCUMENT SETUP %%%%%%</span>
+</span></span><span class=line><span class=cl><span class=n>fileID</span> <span class=p>=</span> <span class=n>fopen</span><span class=p>(</span><span class=s>&#39;experiment_3_a_results.html&#39;</span><span class=p>,</span> <span class=s>&#39;w&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>title</span> <span class=p>=</span> <span class=n>sprintf</span><span class=p>(</span><span class=s>&#39;Experiment 3 Results&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=n>h1</span> <span class=p>=</span> <span class=n>sprintf</span><span class=p>(</span><span class=s>&#39;Experiment 3: Results&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=n>subtitle</span> <span class=p>=</span> <span class=n>sprintf</span><span class=p>(</span><span class=s>&#39;Version A&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=n>fprintf</span><span class=p>(</span><span class=n>fileID</span><span class=p>,</span> <span class=p>[</span><span class=s>&#39;&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;title&gt;&#39;</span><span class=p>,</span> <span class=n>title</span><span class=p>,</span> <span class=s>&#39;&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;center&gt;&lt;h1&gt;&#39;</span><span class=p>,</span> <span class=n>h1</span><span class=p>,</span> <span class=s>&#39;&lt;/h1&gt;&lt;p&gt;&#39;</span><span class=p>,</span> <span class=n>subtitle</span><span class=p>,</span> <span class=s>&#39;&lt;/p&gt;&lt;br/&gt;&#39;</span><span class=p>]);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c>%%%%%% COMPUTE RESULTS &amp; PLOT %%%%%%</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c>% exportgraphics(plot_handle(i), [&#39;plot_&#39;, num2str(i), &#39;.png&#39;]);</span>
+</span></span><span class=line><span class=cl><span class=c>% fprintf(fileID, [&#39;img src=&#34;plot_&#39;, num2str(i), &#39;.png&#34; width=&#34;880px&#34;/&gt;&lt;br/&gt;&#39;]);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c>%%%%%% END DOCUMENT %%%%%%</span>
+</span></span><span class=line><span class=cl><span class=n>fprintf</span><span class=p>(</span><span class=n>fileID</span><span class=p>,</span> <span class=p>[</span><span class=s>&#39;&lt;/body&gt;&lt;/center&gt;&lt;/html&gt;&#39;</span><span class=p>]);</span>
+</span></span><span class=line><span class=cl><span class=n>fclose</span><span class=p>(</span><span class=n>fileID</span><span class=p>);</span>
+</span></span></code></pre></td></tr></table></div></div><hr><h2 id=configuring-page-breaks-for-converted-pdf-document>Configuring Page Breaks (for Converted PDF Document)</h2><p>One of the properties available in CSS, <a href=https://developer.mozilla.org/en-US/docs/Web/CSS/break-after>break-after</a>, can be used to set page breaks that can be noticed when the document is printed (or, in the usecase I am targeting, when converted to PDF). So, in order to configure page breaks, I insert this:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>div</span> <span class=na>style</span><span class=o>=</span><span class=s>&#34;break-after: page;&#34;</span><span class=p>&gt;&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
+</span></span></code></pre></td></tr></table></div></div><p>For example, to have each image be rendered on a separate page on the resulting PDF conversion, use:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-matlab data-lang=matlab><span class=line><span class=cl><span class=k>for</span> <span class=nb>i</span> <span class=p>=</span> <span class=mi>1</span><span class=p>:</span><span class=n>N</span>
+</span></span><span class=line><span class=cl>    <span class=n>plot_handle</span><span class=p>(</span><span class=nb>i</span><span class=p>)</span> <span class=p>=</span> <span class=n>figure</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>plot</span><span class=p>(</span> <span class=s>&#39;...&#39;</span> <span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>exportgraphics</span><span class=p>(</span><span class=n>plot_handle</span><span class=p>(</span><span class=nb>i</span><span class=p>),</span> <span class=p>[</span><span class=s>&#39;plot_&#39;</span><span class=p>,</span> <span class=n>num2str</span><span class=p>(</span><span class=nb>i</span><span class=p>),</span> <span class=s>&#39;.png&#39;</span><span class=p>]);</span>
+</span></span><span class=line><span class=cl>    <span class=n>fprintf</span><span class=p>(</span><span class=n>fileID</span><span class=p>,</span> <span class=p>[</span><span class=s>&#39;img src=&#34;plot_&#39;</span><span class=p>,</span> <span class=n>num2str</span><span class=p>(</span><span class=nb>i</span><span class=p>),</span> <span class=s>&#39;.png&#34; width=&#34;880px&#34;/&gt;&lt;br/&gt;&#39;</span><span class=p>]);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>fprintf</span><span class=p>(</span><span class=n>fileID</span><span class=p>,</span> <span class=p>[</span><span class=s>&#39;&lt;div style=&#34;break-after: page;&#34;&gt;&lt;/div&gt;&#39;</span><span class=p>]);</span>
+</span></span></code></pre></td></tr></table></div></div><hr><h2 id=afterword>Afterword</h2><p>Now that the workflow and results are more to my liking, I am happy dealing with 50+ figures per script nowadays.</p></article></main></div><footer class="mt-8 mb-8"><div class="container mx-auto"><div class="mt-8 flex justify-between items-center"><p class="mt-0 text-sm">© 2024 Emmanuella Rumanti |
+<a href=https://gohugo.io target=_blank rel="noopener noreferrer">Hugo</a> on
+<a href=https://github.com/mivinci/hugo-theme-minima target=_blank rel="noopener noreferrer">Minima</a></p><p class="flex items-center mt-0"><a class="icon ml-1 mr-1" href=mailto:amuritna@gmail.com title=email><svg fill="#63636f" width="22" height="22" viewBox="0 0 24 24"><path d="M3 3h18a1 1 0 011 1v16a1 1 0 01-1 1H3a1 1 0 01-1-1V4a1 1 0 011-1zm9.06 8.683L5.648 6.238 4.353 7.762l7.72 6.555 7.581-6.56-1.308-1.513-6.285 5.439z"/></svg>
+</a><a class="icon ml-1 mr-1" href=https://github.com/amuritna title=github><svg fill="#63636f" width="18" role="img" viewBox="0 0 24 24"><title>GitHub</title><path d="M12 .297c-6.63.0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577.0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93.0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176.0.0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22.0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22.0 1.606-.015 2.896-.015 3.286.0.315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+</a><a class="icon ml-1 mr-1" href=/index.xml title=rss><svg fill="#63636f" t="1626591563876" viewBox="0 0 1024 1024" p-id="1984" width="18" height="16"><path d="M128 768a128 128 0 100 256 128 128 0 000-256zM0 368v176c265.104.0 480 214.912 480 480h176c0-362.32-293.696-656-656-656zM0 0v176c468.336.0 848 379.664 848 848h176C1024 458.464 565.536.0.0.0z" p-id="1985"/></svg></a></p></div></div><center><img class=footercat src="https://github.com/amuritna/amuritna.github.io/blob/main/assets/cat2.png?raw=true" alt="A simple doodle of a cat sitting by a mug, which has lightning shooting out of it."></center></footer></body></html>
