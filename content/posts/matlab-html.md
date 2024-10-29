@@ -89,7 +89,7 @@ Initially, I thought there was the possibility of me anding having to spend more
 %%%%%% DOCUMENT SETUP %%%%%%
 
 fileID = fopen('experiment_3_a_results.html', 'w');
-title = sprintf('Experiment 3 Results');
+doc_title = sprintf('Experiment 3 Results');
 h1 = sprintf('Experiment 3: Results');
 subtitle = sprintf('Version A');
 
@@ -97,7 +97,7 @@ document_start = sprintf([ ...
     '<!DOCTYPE html>' ...
     '<html>' ...
         '<head>' ...
-            '<title>', title, '</title>' ...
+            '<title>', doc_title, '</title>' ...
         '</head>' ...
         '<body>' ...
         '<center>'
@@ -136,10 +136,10 @@ A shorter, but less readable, version:
 %%%%%% DOCUMENT SETUP %%%%%%
 fileID = fopen('experiment_3_a_results.html', 'w');
 
-title = sprintf('Experiment 3 Results');
+doc_title = sprintf('Experiment 3 Results');
 h1 = sprintf('Experiment 3: Results');
 subtitle = sprintf('Version A');
-fprintf(fileID, ['<!DOCTYPE html><html><head><title>', title, '</title></head><body><center><h1>', h1, '</h1><p>', subtitle, '</p><br/>']);
+fprintf(fileID, ['<!DOCTYPE html><html><head><title>', doc_title, '</title></head><body><center><h1>', h1, '</h1><p>', subtitle, '</p><br/>']);
 
 %%%%%% COMPUTE RESULTS & PLOT %%%%%%
 
