@@ -91,7 +91,7 @@ Initially, I thought there was the possibility of me anding having to spend more
 fileID = fopen('experiment_3_a_results.html', 'w');
 doc_title = sprintf('Experiment 3 Results');
 h1 = sprintf('Experiment 3: Results');
-subtitle = sprintf('Version A');
+doc_subtitle = sprintf('Version A');
 
 document_start = sprintf([ ... 
     '<!DOCTYPE html>' ...
@@ -105,7 +105,7 @@ document_start = sprintf([ ...
 
 document_heading = sprintf([ ...
     '<h1>', h1, '</h1>' ...
-    '<p>', subtitle, '</p>' ...
+    '<p>', doc_subtitle, '</p>' ...
     '<br/>'
     ]);
 
@@ -129,8 +129,8 @@ fprintf(fileID, document_end);
 fclose(fileID);
 ```
 
-
 A shorter, but less readable, version:
+
 ```matlab
 
 %%%%%% DOCUMENT SETUP %%%%%%
@@ -138,8 +138,8 @@ fileID = fopen('experiment_3_a_results.html', 'w');
 
 doc_title = sprintf('Experiment 3 Results');
 h1 = sprintf('Experiment 3: Results');
-subtitle = sprintf('Version A');
-fprintf(fileID, ['<!DOCTYPE html><html><head><title>', doc_title, '</title></head><body><center><h1>', h1, '</h1><p>', subtitle, '</p><br/>']);
+doc_subtitle = sprintf('Version A');
+fprintf(fileID, ['<!DOCTYPE html><html><head><title>', doc_title, '</title></head><body><center><h1>', h1, '</h1><p>', doc_subtitle, '</p><br/>']);
 
 %%%%%% COMPUTE RESULTS & PLOT %%%%%%
 

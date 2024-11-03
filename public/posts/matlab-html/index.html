@@ -28,10 +28,10 @@
   
   
   
-  <link rel="stylesheet" href="/minima.1730175212.css">
+  <link rel="stylesheet" href="/minima.1730650677.css">
   
   
-  <script defer type="text/javascript" src="/minima.1730175212.js"></script>
+  <script defer type="text/javascript" src="/minima.1730650677.js"></script>
   
 </head>
 <script>
@@ -257,7 +257,7 @@
 </span></span><span class="line"><span class="cl"><span class="n">fileID</span> <span class="p">=</span> <span class="n">fopen</span><span class="p">(</span><span class="s">&#39;experiment_3_a_results.html&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="n">doc_title</span> <span class="p">=</span> <span class="n">sprintf</span><span class="p">(</span><span class="s">&#39;Experiment 3 Results&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="n">h1</span> <span class="p">=</span> <span class="n">sprintf</span><span class="p">(</span><span class="s">&#39;Experiment 3: Results&#39;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="n">subtitle</span> <span class="p">=</span> <span class="n">sprintf</span><span class="p">(</span><span class="s">&#39;Version A&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">doc_subtitle</span> <span class="p">=</span> <span class="n">sprintf</span><span class="p">(</span><span class="s">&#39;Version A&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">document_start</span> <span class="p">=</span> <span class="n">sprintf</span><span class="p">([</span> <span class="c">... </span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#39;&lt;!DOCTYPE html&gt;&#39;</span> <span class="c">...</span>
@@ -271,7 +271,7 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">document_heading</span> <span class="p">=</span> <span class="n">sprintf</span><span class="p">([</span> <span class="c">...</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#39;&lt;h1&gt;&#39;</span><span class="p">,</span> <span class="n">h1</span><span class="p">,</span> <span class="s">&#39;&lt;/h1&gt;&#39;</span> <span class="c">...</span>
-</span></span><span class="line"><span class="cl">    <span class="s">&#39;&lt;p&gt;&#39;</span><span class="p">,</span> <span class="n">subtitle</span><span class="p">,</span> <span class="s">&#39;&lt;/p&gt;&#39;</span> <span class="c">...</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#39;&lt;p&gt;&#39;</span><span class="p">,</span> <span class="n">doc_subtitle</span><span class="p">,</span> <span class="s">&#39;&lt;/p&gt;&#39;</span> <span class="c">...</span>
 </span></span><span class="line"><span class="cl">    <span class="s">&#39;&lt;br/&gt;&#39;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">]);</span>
 </span></span><span class="line"><span class="cl">
@@ -323,8 +323,8 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">doc_title</span> <span class="p">=</span> <span class="n">sprintf</span><span class="p">(</span><span class="s">&#39;Experiment 3 Results&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="n">h1</span> <span class="p">=</span> <span class="n">sprintf</span><span class="p">(</span><span class="s">&#39;Experiment 3: Results&#39;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="n">subtitle</span> <span class="p">=</span> <span class="n">sprintf</span><span class="p">(</span><span class="s">&#39;Version A&#39;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="n">fprintf</span><span class="p">(</span><span class="n">fileID</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;title&gt;&#39;</span><span class="p">,</span> <span class="n">doc_title</span><span class="p">,</span> <span class="s">&#39;&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;center&gt;&lt;h1&gt;&#39;</span><span class="p">,</span> <span class="n">h1</span><span class="p">,</span> <span class="s">&#39;&lt;/h1&gt;&lt;p&gt;&#39;</span><span class="p">,</span> <span class="n">subtitle</span><span class="p">,</span> <span class="s">&#39;&lt;/p&gt;&lt;br/&gt;&#39;</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl"><span class="n">doc_subtitle</span> <span class="p">=</span> <span class="n">sprintf</span><span class="p">(</span><span class="s">&#39;Version A&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">fprintf</span><span class="p">(</span><span class="n">fileID</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;title&gt;&#39;</span><span class="p">,</span> <span class="n">doc_title</span><span class="p">,</span> <span class="s">&#39;&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;center&gt;&lt;h1&gt;&#39;</span><span class="p">,</span> <span class="n">h1</span><span class="p">,</span> <span class="s">&#39;&lt;/h1&gt;&lt;p&gt;&#39;</span><span class="p">,</span> <span class="n">doc_subtitle</span><span class="p">,</span> <span class="s">&#39;&lt;/p&gt;&lt;br/&gt;&#39;</span><span class="p">]);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c">%%%%%% COMPUTE RESULTS &amp; PLOT %%%%%%</span>
 </span></span><span class="line"><span class="cl">
