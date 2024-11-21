@@ -14,7 +14,7 @@ description: API publik + manipulasi DOM dengan JavaScript + *Fetch API* untuk *
 
 Sejauh ini, yang terjadi saat browser [nge-*render*](https://en.wikipedia.org/wiki/Browser_engine) webpage adalah proses interpretasi (HTML dan CSS) dan [kompilasi](https://en.wikipedia.org/wiki/JavaScript_engine) (JavaScript) terhadap kode yang diberikan di `.html`, `.css`, dan `.js`. Informasi yang ditampilkan di webpage sepenuhnya berdasarkan apa yang telah ditulis di kode - jika ingin dilakukan perubahan, kode harus diubah atau ditulis ulang.
 
-![alt](https://github.com/divkomitb/divkomitb.github.io/blob/main/assets/static-web.png?raw=true)
+![alt](https://github.com/amuritna/amuritna.github.io/blob/main/assets/static-web.png?raw=true)
 
 Bagaimana jika kita ingin menampilkan suatu informasi yang berubah-ubah tiap hari — contohnya, suhu dan cuaca di suatu tempat? Bagaimana jika kita ingin mengubah-ubah konten, mungkin bahkan secara otomatis, tanpa mengubah *source code* langsung? Ini adalah faktor yang membedakan *static websites* dan *dynamic websites* (website statis vs dinamis). Konten dari website statis hanya berubah saat *source code* diubah, sedangkan konten website dinamis dapat berinteraksi dengan hal-hal seperti *database* dan malah bisa jadi menampilkan hal yang berbeda untuk tiap user.
 
@@ -198,25 +198,25 @@ function myFunction(a, b) {
 
 Dalam konteks pengembangan website — serta dalam konteks lowongan pekerjaan *web developer* — ada dua istilah yang sering muncul, yaitu "[*front-end*](https://en.wikipedia.org/wiki/Front-end_web_development)" dan "*back-end*". Kedua istilah ini digunakan untuk "membagi" proses yang terjadi di balik layar menjadi dua.
 
-![alt](https://github.com/divkomitb/divkomitb.github.io/blob/main/assets/fe-vs-be.png?raw=true)
+![alt](https://github.com/amuritna/amuritna.github.io/blob/main/assets/fe-vs-be.png?raw=true)
 
 Singkatnya, *front-end* adalah aspek-aspek yang dapat dilihat oleh dan secara langsung berinteraksi dengan user ([*client-side*](https://en.wikipedia.org/wiki/Client-side)), seperti HTML, CSS, dan JavaScript — yang telah kita pelajari sedikit demi sedikit sejauh ini. Sedangkan *back-end* adalah infrastruktur "sisi server" ([*server-side*](https://en.wikipedia.org/wiki/Server-side)) yang mengurus *database*. 
 
 Komponen "*front-end*" dan "*back-end*" ini dihubungkan dengan satu sama lain menggunakan perantara *Application Programming Interface* — biasa disingkat menjadi [APIs](https://en.wikipedia.org/wiki/API). Saat website Edunex meminta, ke server, informasi daftar "*Courses*" yang sedang diikuti, sisi *front-end* membuat *request* ke *back-end* menggunakan API. *Back-end* lalu merespons dengan mengirim kembali informasi yang diminta, lagi-lagi menggunakan API. 
 
-![alt](https://github.com/divkomitb/divkomitb.github.io/blob/main/assets/request-resp.png?raw=true)
+![alt](https://github.com/amuritna/amuritna.github.io/blob/main/assets/request-resp.png?raw=true)
 
 Pengiriman *request* dan pembacaan *response* API ini dilakukan oleh browser dan dapat dipantau prosesnya menggunakan *Developer Tools*.
 
 Di Mozilla Firefox atau Google Chrome, buka "*Developer Tools*" lalu pilih opsi "*Network*" untuk membuka *Network Monitor*. Untuk mendapatkan hasil yang seperti di contoh berikut (di Firefox), telah diklik salah satu *request*. Sekilas, *request* ini meminta informasi mengenai *courses* menggunakan API Edunex.
 
-![alt](https://github.com/divkomitb/divkomitb.github.io/blob/main/assets/edunex-get-courses.png?raw=true)
+![alt](https://github.com/amuritna/amuritna.github.io/blob/main/assets/edunex-get-courses.png?raw=true)
 
 Perhatikan bahwa *Network Monitor* dari Firefox ini melabeli *method* dari *request* ini sebagai GET. Ada dua metode fundamental dalam dunia *web APIs*, yaitu [GET](https://en.wikipedia.org/wiki/HTTP#Request_methods) (meminta informasi) dan [POST](https://en.wikipedia.org/wiki/POST_(HTTP)) (mengirim informasi). Untuk melihat metode POST, sambil membuka *Network Monitor* lakukan sesuatu yang mengirim informasi ke server.
 
 ... Contohnya, nge-*tweet*. Buka *Network Monitor*, buat sebuah *tweet*, *post*, lalu amati yang terjadi.
 
-![alt](https://github.com/divkomitb/divkomitb.github.io/blob/main/assets/createtweet.png?raw=true)
+![alt](https://github.com/amuritna/amuritna.github.io/blob/main/assets/createtweet.png?raw=true)
 
 
 ---
@@ -287,7 +287,7 @@ Berikut adalah hasil yang didapatkan setelah *script* di atas diuji dengan dijal
 
 Dapat dilihat bahwa *response* yang diberikan sebagai `Object` memiliki informasi yang sama dengan *response* yang sebelumnya didapatkan:
 
-![alt](https://github.com/divkomitb/divkomitb.github.io/blob/main/assets/idr-console.png?raw=true)
+![alt](https://github.com/amuritna/amuritna.github.io/blob/main/assets/idr-console.png?raw=true)
 
 Jika di-*copy-paste* (klik-kanan > *Copy Object*), didapatkan formatting sebagai berikut — formatting yang bernama formatting JSON (JavaScript Object Notation).
 
@@ -326,7 +326,7 @@ akan menghasilkan output `0.00025267`.
 
 Silakan cek apakah informasi ini sesuai dengan nilai kurs yang sesungguhnya sedang berlaku.
 
-![alt](https://github.com/divkomitb/divkomitb.github.io/blob/main/assets/kurs-rupiah.png?raw=true)
+![alt](https://github.com/amuritna/amuritna.github.io/blob/main/assets/kurs-rupiah.png?raw=true)
 
 Sekarang kita mengetahui cara menggunakan `fetch()` di JavaScript untuk mendapatkan *response* suatu *public API* (dalam kasus ini, *public API* milik NBP yang memberikan *response* informasi kurs yang sedang berlaku).
 
@@ -364,7 +364,7 @@ Setelahnya, kita bisa membuat webpage HTML dan JavaScript yang menampilkan ini.
 
 Hasilnya adalah sebagai berikut (dengan nilai kurs yang mungkin berbeda, jika nilai kurs telah berubah):
 
-![alt](https://github.com/divkomitb/divkomitb.github.io/blob/main/assets/idr-html.png?raw=true)
+![alt](https://github.com/amuritna/amuritna.github.io/blob/main/assets/idr-html.png?raw=true)
 
 ---
 
@@ -379,17 +379,17 @@ Ada berbagai alasan APIs yang dibuat dengan metode ini tidak akan bisa menyaingi
 
 Pertama, buat sebuah *spreadsheet* menggunakan Google Sheets. *Spreadsheet* inilah yang akan menjadi *database*. Sebagai contoh, terdapat *spreadsheet* dengan informasi *timestamp* dan tanggal sebagai berikut yang merupakan hasil submisi Google Forms.
 
-![alt](https://github.com/divkomitb/divkomitb.github.io/blob/main/assets/gsheet-example.png?raw=true)
+![alt](https://github.com/amuritna/amuritna.github.io/blob/main/assets/gsheet-example.png?raw=true)
 
 Kita berencana merancang API yang akan melakukan *fetch* terhadap informasi yang ada pada *spreadsheet* ini.
 
 Pada *spreadsheet* yang telah dibuka, pilih "*Extensions*" > "*Apps Script*". Tindakan ini akan membuka sebuah tab baru.
 
-![alt](https://github.com/divkomitb/divkomitb.github.io/blob/main/assets/apps-script1.png?raw=true)
+![alt](https://github.com/amuritna/amuritna.github.io/blob/main/assets/apps-script1.png?raw=true)
 
 Berikut adalah tampilan yang ada pada tab baru tersebut.
 
-![alt](https://github.com/divkomitb/divkomitb.github.io/blob/main/assets/apps-script2.png?raw=true)
+![alt](https://github.com/amuritna/amuritna.github.io/blob/main/assets/apps-script2.png?raw=true)
 
 Untuk membuat sebuah *fetch API*, kita mesti menggunakan `doGet()`. Pada `Code.gs`, ganti kode *template* yang sudah ada dengan *sample* berikut.
 
@@ -435,39 +435,39 @@ Sekarang, kita siap menguji API ini!
 
 Untuk melakukan *deployment*, klik tombol biru *Deploy* lalu pilih *New deployment*.
 
-![alt](https://github.com/divkomitb/divkomitb.github.io/blob/main/assets/apps-script3.png?raw=true)
+![alt](https://github.com/amuritna/amuritna.github.io/blob/main/assets/apps-script3.png?raw=true)
 
 Selanjutnya, pilih "*Web app*" saat ditanyakan *deployment type*.
 
-![alt](https://github.com/divkomitb/divkomitb.github.io/blob/main/assets/apps-script4.png?raw=true)
+![alt](https://github.com/amuritna/amuritna.github.io/blob/main/assets/apps-script4.png?raw=true)
 
 Pada pengaturan konfigurasi web app deployment yang muncul, pilih opsi "*Execute as > User accessing the web app*" dan "*Who has access > Only myself*". Klik tombol biru *Deploy*.
 
-![alt](https://github.com/divkomitb/divkomitb.github.io/blob/main/assets/apps-script5.png?raw=true)
+![alt](https://github.com/amuritna/amuritna.github.io/blob/main/assets/apps-script5.png?raw=true)
 
 Setelah proses *updating* selesai, akan muncul tampilan sebagai berikut. *Copy* URL yang ada pada bagian "*Web app*".
 
 URL ini sama seperti URL yang sebelumnya kita gunakan untuk mendapatkan nilai kurs IDR pada *public API* Bank Polandia — kita dapat mengecek hasilnya langsung di browser. *Paste* pada *URL bar* browser, lalu *enter*. 
 
-![alt](https://github.com/divkomitb/divkomitb.github.io/blob/main/assets/apps-script6.png?raw=true)
+![alt](https://github.com/amuritna/amuritna.github.io/blob/main/assets/apps-script6.png?raw=true)
 
 Saat diminta melakukan verifikasi *permissions*, ikuti saja alurnya. Pilih *Review Permissions*. 
 
-![alt](https://github.com/divkomitb/divkomitb.github.io/blob/main/assets/apps-script7.png?raw=true)
+![alt](https://github.com/amuritna/amuritna.github.io/blob/main/assets/apps-script7.png?raw=true)
 
 Selanjutnya, seleksi *Advanced* lalu pilih *Go to [project name] (unsafe)*. 
 
-![alt](https://github.com/divkomitb/divkomitb.github.io/blob/main/assets/apps-script8.png?raw=true)
+![alt](https://github.com/amuritna/amuritna.github.io/blob/main/assets/apps-script8.png?raw=true)
 
 Klik *Allow*. Tindakan ini juga mungkin akan memberikan *security notification*.
 
-![alt](https://github.com/divkomitb/divkomitb.github.io/blob/main/assets/apps-script9.png?raw=true)
+![alt](https://github.com/amuritna/amuritna.github.io/blob/main/assets/apps-script9.png?raw=true)
 
 Akhirnya, didapatkan *response* dari *fetch API* yang telah kita rancang menggunakan Google Apps Script.
 
 Perhatikan bahwa isinya *harusnya* sama dengan isi yang ada pada *spreadsheet*.
 
-![alt](https://github.com/divkomitb/divkomitb.github.io/blob/main/assets/apps-script10.png?raw=true)
+![alt](https://github.com/amuritna/amuritna.github.io/blob/main/assets/apps-script10.png?raw=true)
 
 Kita telah berhasil membuat sebuah *fetch API*!
 
