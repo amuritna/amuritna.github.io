@@ -2,6 +2,67 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://amuritna.github.io/id/posts/intro-http-apis-apps-script/</loc>
+    <lastmod>2024-11-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amuritna.github.io/id/categories/</loc>
+    <lastmod>2024-11-21T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://amuritna.github.io/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="id"
+                href="https://amuritna.github.io/id/categories/"
+                />
+  </url><url>
+    <loc>https://amuritna.github.io/id/</loc>
+    <lastmod>2024-11-21T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://amuritna.github.io/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="id"
+                href="https://amuritna.github.io/id/"
+                />
+  </url><url>
+    <loc>https://amuritna.github.io/id/tags/javascript/</loc>
+    <lastmod>2024-11-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amuritna.github.io/id/posts/</loc>
+    <lastmod>2024-11-21T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://amuritna.github.io/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="id"
+                href="https://amuritna.github.io/id/posts/"
+                />
+  </url><url>
+    <loc>https://amuritna.github.io/id/tags/</loc>
+    <lastmod>2024-11-21T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://amuritna.github.io/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="id"
+                href="https://amuritna.github.io/id/tags/"
+                />
+  </url><url>
+    <loc>https://amuritna.github.io/id/categories/tutorial/</loc>
+    <lastmod>2024-11-21T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://amuritna.github.io/id/about/</loc>
     <lastmod>2024-05-10T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -18,47 +79,8 @@
     <loc>https://amuritna.github.io/id/posts/io-python/</loc>
     <lastmod>2023-07-25T14:28:05+07:00</lastmod>
   </url><url>
-    <loc>https://amuritna.github.io/id/categories/</loc>
-    <lastmod>2023-07-25T14:28:05+07:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://amuritna.github.io/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="id"
-                href="https://amuritna.github.io/id/categories/"
-                />
-  </url><url>
-    <loc>https://amuritna.github.io/id/</loc>
-    <lastmod>2023-07-25T14:28:05+07:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://amuritna.github.io/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="id"
-                href="https://amuritna.github.io/id/"
-                />
-  </url><url>
     <loc>https://amuritna.github.io/id/tags/hacktoberfest/</loc>
     <lastmod>2023-07-25T14:28:05+07:00</lastmod>
-  </url><url>
-    <loc>https://amuritna.github.io/id/posts/</loc>
-    <lastmod>2023-07-25T14:28:05+07:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://amuritna.github.io/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="id"
-                href="https://amuritna.github.io/id/posts/"
-                />
   </url><url>
     <loc>https://amuritna.github.io/id/tags/programming/</loc>
     <lastmod>2023-07-25T14:28:05+07:00</lastmod>
@@ -78,21 +100,5 @@
                 hreflang="id"
                 href="https://amuritna.github.io/id/categories/repost/"
                 />
-  </url><url>
-    <loc>https://amuritna.github.io/id/tags/</loc>
-    <lastmod>2023-07-25T14:28:05+07:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://amuritna.github.io/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="id"
-                href="https://amuritna.github.io/id/tags/"
-                />
-  </url><url>
-    <loc>https://amuritna.github.io/id/categories/tutorial/</loc>
-    <lastmod>2023-07-25T14:28:05+07:00</lastmod>
   </url>
 </urlset>

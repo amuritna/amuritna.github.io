@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>javascript on Emmanuella Rumanti</title>
+    <link>https://amuritna.github.io/id/tags/javascript/</link>
+    <description>Recent content in javascript on Emmanuella Rumanti</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© 2024 Emmanuella Rumanti</copyright>
+    <lastBuildDate>Thu, 21 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://amuritna.github.io/id/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bermain dengan HTTP APIs menggunakan Google Apps Script</title>
+      <link>https://amuritna.github.io/id/posts/intro-http-apis-apps-script/</link>
+      <pubDate>Thu, 21 Nov 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://amuritna.github.io/id/posts/intro-http-apis-apps-script/</guid>
+      <description>Tulisan ini adalah hasil gabungan beberapa tutorial yang saya tulis selama jabatan saya sebagai Ketua Divisi Komputer HME ITB. Tulisan-tulisan tersebut telah diedit ulang dan dipost kembali untuk keperluan pengarsipan.
+Sejauh ini, yang terjadi saat browser nge-render webpage adalah proses interpretasi (HTML dan CSS) dan kompilasi (JavaScript) terhadap kode yang diberikan di .html, .css, dan .js. Informasi yang ditampilkan di webpage sepenuhnya berdasarkan apa yang telah ditulis di kode - jika ingin dilakukan perubahan, kode harus diubah atau ditulis ulang.</description>
+    </item>
+    
+  </channel>
+</rss>

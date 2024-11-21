@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="google-site-verification" content="_WiKfJK12JC0hTdF6dg1Hc9bFpl8ZvdZHSX-JYD2yTQ" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="Bermain dengan HTTP APIs menggunakan Google Apps Script" />
+<meta property="og:description" content="API publik &#43; manipulasi DOM dengan JavaScript &#43; *Fetch API* untuk *spreadsheet* hasil Google Forms." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://amuritna.github.io/id/posts/intro-http-apis-apps-script/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-11-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-11-21T00:00:00+00:00" />
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Bermain dengan HTTP APIs menggunakan Google Apps Script"/>
+<meta name="twitter:description" content="API publik &#43; manipulasi DOM dengan JavaScript &#43; *Fetch API* untuk *spreadsheet* hasil Google Forms."/>
+
+  
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#262d33">
+  <title>
+    
+    Emmanuella Rumanti - Bermain dengan HTTP APIs menggunakan Google Apps Script
+    
+  </title>
+  
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  
+  
+  
+  <link rel="stylesheet" href="/minima.1732177718.css">
+  
+  
+  <script defer type="text/javascript" src="/minima.1732177718.js"></script>
+  
+</head>
+<script>
+  
+  let default_theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+
+  try {
+    const local = localStorage.getItem('theme')
+    if (local) {
+      default_theme = local
+    }
+    localStorage.setItem('theme', default_theme);
+    window.minima_theme = default_theme;
+    document.querySelector('html').classList.add(default_theme);
+  } catch (e) {
+    console.error(e);
+  }
+</script>
+
+
+
+<body>
+  <header class="mt-3 mb-6">
+  <div class="container mx-auto">
+    <nav class="flex justify-between items-center">
+      <div class="flex items-center">
+        
+        <div id="theme-switch" class="text-3xl cursor-pointer">🌇</div>
+      </div>
+      <ul class="flex items-center font-medium
+        whitespace-nowrap overflow-x-auto overflow-y-hidden">
+        
+        <li class="ml-1 mr-1"><a href="/id/about">Tentang</a></li>
+        
+        <li class="ml-1 mr-1"><a href="/id/categories">Kategori</a></li>
+        
+      </ul>
+      <ul class="flex item-center text-sm font-bold">
+        
+        <li class="ml-2"><a href="https://amuritna.github.io/">EN</a></li>
+        
+        <li class="ml-2"><a href="https://amuritna.github.io/id/">ID</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+  
+<div class="container mx-auto">
+  <h1 class="text-4xl font-extrabold mt-6 mb-6">Bermain dengan HTTP APIs menggunakan Google Apps Script</h1>
+  <div class="mb-3 text-sm flex justify-between ">
+    <div>
+      
+      Postingan pada &mdash; 21 Nov 2024
+      
+      
+    </div>
+    
+    <div>
+      
+      
+      <a class="ml-1" href="/id/tags/javascript">#javascript</a>
+      
+    </div>
+    
+  </div>
+  <main class="mb-8">
+    <p>API publik + manipulasi DOM dengan JavaScript + <em>Fetch API</em> untuk <em>spreadsheet</em> hasil Google Forms.</p>
+    <article class="md">
+      <hr>
+<p><em>Tulisan ini adalah hasil gabungan beberapa tutorial yang saya tulis selama jabatan saya sebagai Ketua Divisi Komputer HME ITB. Tulisan-tulisan tersebut telah diedit ulang dan dipost kembali untuk keperluan pengarsipan.</em></p>
+<hr>
+<p>Sejauh ini, yang terjadi saat browser <a href="https://en.wikipedia.org/wiki/Browser_engine">nge-<em>render</em></a> webpage adalah proses interpretasi (HTML dan CSS) dan <a href="https://en.wikipedia.org/wiki/JavaScript_engine">kompilasi</a> (JavaScript) terhadap kode yang diberikan di <code>.html</code>, <code>.css</code>, dan <code>.js</code>. Informasi yang ditampilkan di webpage sepenuhnya berdasarkan apa yang telah ditulis di kode - jika ingin dilakukan perubahan, kode harus diubah atau ditulis ulang.</p>
+<p><img src="https://github.com/amuritna/amuritna.github.io/blob/main/assets/static-web.png?raw=true" alt="alt"></p>
+<p>Bagaimana jika kita ingin menampilkan suatu informasi yang berubah-ubah tiap hari — contohnya, suhu dan cuaca di suatu tempat? Bagaimana jika kita ingin mengubah-ubah konten, mungkin bahkan secara otomatis, tanpa mengubah <em>source code</em> langsung? Ini adalah faktor yang membedakan <em>static websites</em> dan <em>dynamic websites</em> (website statis vs dinamis). Konten dari website statis hanya berubah saat <em>source code</em> diubah, sedangkan konten website dinamis dapat berinteraksi dengan hal-hal seperti <em>database</em> dan malah bisa jadi menampilkan hal yang berbeda untuk tiap user.</p>
+<p>Untuk merancang <em>dynamic websites</em>, kita dapat memulai dengan konsep &ldquo;<em>front-end</em>&rdquo; versus &ldquo;<em>back-end</em>&rdquo; serta Web APIs. Modul ini lalu menjelaskkan suatu mekanisme untuk mempraktikkan dan melakukan <em>prototyping</em> dengan cepat menggunakan Google Sheets and Google Apps Script.</p>
+<hr>
+<p><a href="#bagian-1-javascript-dan-html">Bagian 1: JavaScript dan HTML</a></p>
+<p><a href="#bagian-2-review-variabel-dan-fungsi-javascript">Bagian 2: <em>Review</em> Variabel dan Fungsi JavaScript</a></p>
+<p><a href="#bagian-3-front-end-dan-back-end">Bagian 3: <em>Front-End</em> dan <em>Back-End</em></a></p>
+<p><a href="#bagian-4-public-apis">Bagian 4: <em>Public APIs</em></a></p>
+<p><a href="#bagian-5-merancang-fetch-api-menggunakan-google-apps-script">Bagian 5: Merancang <em>Fetch API</em> menggunakan Google Apps Script</a></p>
+<hr>
+<h2 id="bagian-1-javascript-dan-html">Bagian 1: JavaScript dan HTML</h2>
+<p>Dalam <em>web development</em>, ada tiga alat paling mendasar yang dapat digunakan: HTML, CSS, dan JavaScript untuk konten, penampilan, dan interaksi secara berturut-turut. Semua <em>modern browser</em> tidak hanya dapat menjalankan ketiga hal ini dengan cukup baik, tetapi juga sudah dilengkapi berbagai <a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Tools_and_setup/What_are_browser_developer_tools"><em>developer tools</em></a>. Oleh karena itu, untuk mencoba-coba sesuatu dengan cepat dan tanpa mesti melakukan <em>software installation</em> atau <em>set-up</em> tambahan, membuat <em>webpage</em> sederhana dengan HTML/CSS/JavaScript dasar (<em>vanilla</em>) dapat menjadi opsi.</p>
+<p>Salah satu fitur JavaScript yang dimanfaatkan untuk tutorial ini adalah <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents">mengubah <em>Document Object Model</em></a> (<em>DOM manipulation</em>). Salah satu <em>HTML method</em> yang dapat digunakan adalah <code>getElementById()</code>. Pada contoh di bawah, JavaScript &ldquo;mencari&rdquo; elemen HTML (dengan <code>id=&quot;demo&quot;</code>), lalu mengubah konten elemen (<code>innerHTML</code>) menjadi &ldquo;<em>Hello JavaScript</em>&rdquo;:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&#34;demo&#34;</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">&#34;Hello JavaScript&#34;</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>JavaScript juga dapat digunakan untuk berinteraksi dengan atribut &hellip;</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">button</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&#34;document.getElementById(&#39;myImage&#39;).src=&#39;lampu_nyala.gif&#39;&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  Nyalakan lampu
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">img</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;myImage&#34;</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;lampu_mati.gif&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;width:100px&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">button</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&#34;document.getElementById(&#39;myImage&#39;).src=&#39;lampu_mati.gif&#39;&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  Matikan lampu
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>&hellip; dan <em>styling</em> (konfigurasi CSS) &hellip;</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;iniText&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  Iya betul ini text.
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&#34;iniText&#34;</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">fontSize</span> <span class="o">=</span> <span class="s2">&#34;35px&#34;</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>&hellip; misalnya, untuk menyembunyikan suatu elemen.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&#34;iniText&#34;</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s2">&#34;none&#34;</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<p>Untuk menyisipkan suatu <em>script</em> JavaScript ke dalam dokumen HTML, masukkan ke dalam tag <code>script</code> di <code>head</code> atau <code>body</code>. Jika menggunakan <code>&lt;script&gt;</code>, disarankan untuk menaruhnya di bagian paling bawah <code>body</code> untuk meningkatkan kecepatan <em>rendering</em>, karena proses <em>rendering</em> browser akan menjadi lebih lama apabila mesti menginterpretasi isi <code>script</code> terlebih dahulu.</p>
+<p>Secara umum, dokumen HTML akan berbentuk seperti</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="cp">&lt;!DOCTYPE HTML&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Title<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    ...
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    ...
+</span></span><span class="line"><span class="cl">    ...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">...</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Untuk menulis <em>script</em> di file terpisah, contohnya yang file-nya bernama <code>myScript.js</code>, ganti <code>&lt;script&gt; ... &lt;/script&gt;</code> dengan:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;myScript.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Untuk mencoba contoh <code>getElementById()</code> dari atas:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="cp">&lt;!DOCTYPE HTML&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Hello, HTML!<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;demo&#34;</span><span class="p">&gt;</span>Hello, HTML!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Lorem ipsum ...<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Goodbye!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&#34;demo&#34;</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">&#34;Hello JavaScript&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Untuk mencoba suatu <em>script</em> dengan cepat dan praktis, misalnya untuk <em>prototyping</em>, opsi lainnya adalah langsung menggunakan <em>Developer Tools</em>. Buka <em>Inspect Element</em> lalu cari tab <em>Console</em>. Masukkan kode yang ingin dijalankan.</p>
+<p><em><strong>Warning</strong></em>: <a href="https://en.wikipedia.org/wiki/Self-XSS">Salah satu bentuk penipuan adalah menyuruh seseorang untuk menjalankan kode <em>harmful</em> via <em>console</em> ini</a>, jadi jangan mudah percaya.</p>
+<hr>
+<h2 id="bagian-2-review-variabel-dan-fungsi-javascript">Bagian 2: Review Variabel dan Fungsi JavaScript</h2>
+<p>Saat menulis program, kita menginstruksikan komputer tentang cara memproses informasi, seperti menampilkan teks di layar atau melakukan operasi perhitungan. Untuk mempermudah pengelolaan dan pengambilan data, variabel digunakan untuk menyimpan nilai atau informasi dalam program.</p>
+<p>Dalam bahasa pemrograman JavaScript, ada tiga cara untuk mendeklarasikan variabel, yaitu dengan menggunakan kata kunci var, let, dan const. Pada versi ECMAScript 2015 (ES6), metode deklarasi variabel dengan <code>let</code> dan <code>const</code> diperkenalkan sebagai pengganti <code>var</code>, yang dianggap kontroversial dan dapat menyebabkan <em>bug</em>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">x</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">y</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">y</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span> <span class="c1">// error
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>Variabel yang dideklarasikan menggunakan <code>var</code> selalu memiliki <em>scope</em> global.
+Variabel yang dideklarasikan dengan <code>var</code> TIDAK bisa memiliki <em>block scope</em>, contohnya:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">myFunction</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nx">iniVar</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">let</span> <span class="nx">iniLet</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">iniConst</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">iniVar</span><span class="p">;</span> <span class="c1">// var bisa diakses walau diluar block function, yg laen kagak
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<p>Selanjutnya, kita dapat menggunakan fungsi atau <em>functions</em> (sama seperti di Python dan C). Kita bisa memanggil mereka sesuai keperluan dan memanfaatkan mereka untuk menulis kode yang lebih <em>compact</em>, sehingga programnya menjadi lebih kecil (dan bisa jadi lebih cepat.</p>
+<p>Fungsi JavaScript dibuat dengan menggunakan keyword <code>function</code> yang diikuti nama dan tanda kurung <code>()</code>. Tanda kurung ini dapat berisi nama parameter yang dipisahkan oleh tanda koma: <code>(parameter1, parameter2, ...)</code></p>
+<p>Kode yang akan dieksekusi oleh fungsi ditempatkan di dalam <em>curly brackets</em>: <code>{}</code></p>
+<p>Berikut adalah deklarasi fungsi JavaScript secara umum:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">name</span><span class="p">(</span><span class="nx">parameter1</span><span class="p">,</span> <span class="nx">parameter2</span><span class="p">,</span> <span class="nx">parameter3</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// code to be executed
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Fungsi dapat di-<em>trigger</em> oleh <em>event</em> (seperti nge-<em>hover</em> <em>thumbnail</em>), dipanggil oleh <em>script</em>, atau diinisiasi secara otomatis dengan memanggil dirinya sendiri.</p>
+<p>Ketika ditemukan pernyataan <code>return</code> di JavaScript, eksekusi fungsi dihentikan. Nilai yang dispesifikan pada pernyataan <code>return</code> dikembalikan ke &ldquo;<em>caller</em>&rdquo;.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">// Fungsi dipanggil, nilai return bakal berakhir di x
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">myFunction</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&#34;iniText&#34;</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">myFunction</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Fungsi mengembalikan hasil perkalian a dan b
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">return</span> <span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="bagian-3-front-end-dan-back-end">Bagian 3: <em>Front-End</em> dan <em>Back-End</em></h2>
+<p>Dalam konteks pengembangan website — serta dalam konteks lowongan pekerjaan <em>web developer</em> — ada dua istilah yang sering muncul, yaitu &ldquo;<a href="https://en.wikipedia.org/wiki/Front-end_web_development"><em>front-end</em></a>&rdquo; dan &ldquo;<em>back-end</em>&rdquo;. Kedua istilah ini digunakan untuk &ldquo;membagi&rdquo; proses yang terjadi di balik layar menjadi dua.</p>
+<p><img src="https://github.com/amuritna/amuritna.github.io/blob/main/assets/fe-vs-be.png?raw=true" alt="alt"></p>
+<p>Singkatnya, <em>front-end</em> adalah aspek-aspek yang dapat dilihat oleh dan secara langsung berinteraksi dengan user (<a href="https://en.wikipedia.org/wiki/Client-side"><em>client-side</em></a>), seperti HTML, CSS, dan JavaScript — yang telah kita pelajari sedikit demi sedikit sejauh ini. Sedangkan <em>back-end</em> adalah infrastruktur &ldquo;sisi server&rdquo; (<a href="https://en.wikipedia.org/wiki/Server-side"><em>server-side</em></a>) yang mengurus <em>database</em>.</p>
+<p>Komponen &ldquo;<em>front-end</em>&rdquo; dan &ldquo;<em>back-end</em>&rdquo; ini dihubungkan dengan satu sama lain menggunakan perantara <em>Application Programming Interface</em> — biasa disingkat menjadi <a href="https://en.wikipedia.org/wiki/API">APIs</a>. Saat website Edunex meminta, ke server, informasi daftar &ldquo;<em>Courses</em>&rdquo; yang sedang diikuti, sisi <em>front-end</em> membuat <em>request</em> ke <em>back-end</em> menggunakan API. <em>Back-end</em> lalu merespons dengan mengirim kembali informasi yang diminta, lagi-lagi menggunakan API.</p>
+<p><img src="https://github.com/amuritna/amuritna.github.io/blob/main/assets/request-resp.png?raw=true" alt="alt"></p>
+<p>Pengiriman <em>request</em> dan pembacaan <em>response</em> API ini dilakukan oleh browser dan dapat dipantau prosesnya menggunakan <em>Developer Tools</em>.</p>
+<p>Di Mozilla Firefox atau Google Chrome, buka &ldquo;<em>Developer Tools</em>&rdquo; lalu pilih opsi &ldquo;<em>Network</em>&rdquo; untuk membuka <em>Network Monitor</em>. Untuk mendapatkan hasil yang seperti di contoh berikut (di Firefox), telah diklik salah satu <em>request</em>. Sekilas, <em>request</em> ini meminta informasi mengenai <em>courses</em> menggunakan API Edunex.</p>
+<p><img src="https://github.com/amuritna/amuritna.github.io/blob/main/assets/edunex-get-courses.png?raw=true" alt="alt"></p>
+<p>Perhatikan bahwa <em>Network Monitor</em> dari Firefox ini melabeli <em>method</em> dari <em>request</em> ini sebagai GET. Ada dua metode fundamental dalam dunia <em>web APIs</em>, yaitu <a href="https://en.wikipedia.org/wiki/HTTP#Request_methods">GET</a> (meminta informasi) dan <a href="https://en.wikipedia.org/wiki/POST_(HTTP)">POST</a> (mengirim informasi). Untuk melihat metode POST, sambil membuka <em>Network Monitor</em> lakukan sesuatu yang mengirim informasi ke server.</p>
+<p>&hellip; Contohnya, nge-<em>tweet</em>. Buka <em>Network Monitor</em>, buat sebuah <em>tweet</em>, <em>post</em>, lalu amati yang terjadi.</p>
+<p><img src="https://github.com/amuritna/amuritna.github.io/blob/main/assets/createtweet.png?raw=true" alt="alt"></p>
+<hr>
+<h2 id="bagian-4-public-apis">Bagian 4: <em>Public APIs</em></h2>
+<p>API yang digunakan pada suatu website dapat dipelajari dengan, antara lain, berinteraksi dengan website sambil memantau <em>Network Monitor</em>. Namun, kecuali memang ada intensi untuk melakukan <em>reverse engineering</em>, ini bukan metode yang paling efektif.</p>
+<p>Seringkali, sudah ada dokumentasi publik tentang API yang boleh digunakan yang dapat dibaca-baca. API seperti ini disebut sebagai <em>Public APIs</em> atau <em>Open APIs</em>. API jenis ini berkebalikan dengan API yang hanya untuk digunakan oleh <em>developer</em> internal organisasi.</p>
+<p>Dokumentasi API publik ini umumnya menjelaskan:</p>
+<ul>
+<li>API apa saja yang tersedia/diperbolehkan</li>
+<li>batasan-batasan atau ketentuan (jika berlaku) yang diberikan</li>
+<li>bagaimana cara melakukan <em>authentication</em> (jika berlaku; sebagian API juga berbayar)</li>
+<li>parameter</li>
+</ul>
+<p>Beberapa contoh dokumentasi API publik: <a href="https://docs.github.com/en/rest">milik GitHub</a>, <a href="https://developer.twitter.com/en/docs/twitter-api">milik Twitter</a>, <a href="https://developers.google.com/apis-explorer">milik Google</a>.</p>
+<p>Beberapa orang juga mengompilasi daftar dokumentasi API publik, contohnya <a href="https://github.com/public-apis/public-apis?tab=readme-ov-file">di sini</a>.</p>
+<hr>
+<p>Sebagian API berbentuk lebih sederhana dan lebih mudah digunakan. Salah satu contoh API yang relatif lebih sederhana karena tidak memerlukan <em>authentication</em> atau <em>key</em> adalah API publik milik NBP (Narodowy Bank Polski, alias Bank Nasional Polandia).</p>
+<p><a href="http://api.nbp.pl/en.html"><em>API documentation</em> dari NBP dapat dilihat di sini.</a></p>
+<p>Kita akan mencoba menggunakan API dari NBP untuk menunjukkan bagaimana menggunakan JavaScript untuk berinteraksi dengan API, lalu menampilkan hasilnya di webpage.</p>
+<p><em>Scroll</em> ke <em>query examples</em>. Contoh <em>query</em> pertama yang diberikan adalah</p>
+<pre tabindex="0"><code>http://api.nbp.pl/api/exchangerates/rates/a/chf/
+</code></pre><p><em>Query</em> ini meminta informasi (mengirim <em>request</em>) nilai penukaran mata uang CHF. Di browser, informasi yang diberikan sebagai <em>response</em> oleh API dapat dilihat langsung dengan membuka <em>link</em> <a href="http://api.nbp.pl/api/exchangerates/rates/a/chf/">http://api.nbp.pl/api/exchangerates/rates/a/chf/</a> secara langsung.</p>
+<p>Saat kita melakukan ini, browser mengirim <em>request</em> lalu menampilkan <em>response</em> secara langsung. Untuk mendapatkan nilai penukaran mata uang IDR, kita tinggal memodifikasi contoh <em>request query</em> yang telah diberikan dengan mengganti <code>chf</code> dengan <code>idr</code>.</p>
+<p>Berikut adalah hasil (kira-kira) yang seharusnya diberikan. Angka persisnya dapat berubah tergantung kurs yang sedang berlaku.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;ExchangeRatesSeries&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;Table&gt;</span>A<span class="nt">&lt;/Table&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;Currency&gt;</span>rupia indonezyjska<span class="nt">&lt;/Currency&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;Code&gt;</span>IDR<span class="nt">&lt;/Code&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;Rates&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;Rate&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;No&gt;</span>049/A/NBP/2024<span class="nt">&lt;/No&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;EffectiveDate&gt;</span>2024-03-08<span class="nt">&lt;/EffectiveDate&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;Mid&gt;</span>0.00025267<span class="nt">&lt;/Mid&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/Rate&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&lt;/Rates&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/ExchangeRatesSeries&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Mengecek <em>response</em> dari hasil <em>request</em> yang kita kirim via browser berguna untuk mengecek apakah kita sudah membuat <em>query</em> dan menggunakan API terkait dengan benar. Selanjutnya, untuk melakukan otomatisasi, proses <em>request</em> dan pembacaan <em>response</em> dapat dilakukan di JavaScript menggunakan <code>fetch()</code> sebagai berikut:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">async</span> <span class="kd">function</span> <span class="nx">getIDR</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="s2">&#34;http://api.nbp.pl/api/exchangerates/rates/a/idr/&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">logIDR</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">logIDR</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">getIDR</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Berikut adalah hasil yang didapatkan setelah <em>script</em> di atas diuji dengan dijalankan langsung pada <em>Console</em> di <em>Firefox Developer Tools</em>.</p>
+<p>Dapat dilihat bahwa <em>response</em> yang diberikan sebagai <code>Object</code> memiliki informasi yang sama dengan <em>response</em> yang sebelumnya didapatkan:</p>
+<p><img src="https://github.com/amuritna/amuritna.github.io/blob/main/assets/idr-console.png?raw=true" alt="alt"></p>
+<p>Jika di-<em>copy-paste</em> (klik-kanan &gt; <em>Copy Object</em>), didapatkan formatting sebagai berikut — formatting yang bernama formatting JSON (JavaScript Object Notation).</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;table&#34;</span><span class="p">:</span> <span class="s2">&#34;A&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;currency&#34;</span><span class="p">:</span> <span class="s2">&#34;rupia indonezyjska&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;code&#34;</span><span class="p">:</span> <span class="s2">&#34;IDR&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;rates&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;no&#34;</span><span class="p">:</span> <span class="s2">&#34;049/A/NBP/2024&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;effectiveDate&#34;</span><span class="p">:</span> <span class="s2">&#34;2024-03-08&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;mid&#34;</span><span class="p">:</span> <span class="mf">0.00025267</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Informasi berapa nilai 1 IDR dalam mata uang Polandia, PLN, ada pada bagian <code>&quot;mid&quot;</code>. Untuk mengekstraksi nilai dari <code>&quot;mid&quot;</code>, kodenya adalah</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">logIDR</span><span class="p">.</span><span class="nx">rates</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">mid</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>sehingga (perhatikan bahwa bagian <code>console.log(...)</code> telah dimodifikasi)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">async</span> <span class="kd">function</span> <span class="nx">getIDR</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="s2">&#34;http://api.nbp.pl/api/exchangerates/rates/a/idr/&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">logIDR</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">logIDR</span><span class="p">.</span><span class="nx">rates</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">mid</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>akan menghasilkan output <code>0.00025267</code>.</p>
+<p>Silakan cek apakah informasi ini sesuai dengan nilai kurs yang sesungguhnya sedang berlaku.</p>
+<p><img src="https://github.com/amuritna/amuritna.github.io/blob/main/assets/kurs-rupiah.png?raw=true" alt="alt"></p>
+<p>Sekarang kita mengetahui cara menggunakan <code>fetch()</code> di JavaScript untuk mendapatkan <em>response</em> suatu <em>public API</em> (dalam kasus ini, <em>public API</em> milik NBP yang memberikan <em>response</em> informasi kurs yang sedang berlaku).</p>
+<p>Setelahnya, kita bisa membuat webpage HTML dan JavaScript yang menampilkan ini.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Nilai IDR<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Saat ini, 1 IDR sama dengan ...<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>... <span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;idr-rate&#34;</span><span class="p">&gt;</span>(loading ...)<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> PLN.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="kr">const</span> <span class="nx">idrEl</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&#34;idr-rate&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="kr">async</span> <span class="kd">function</span> <span class="nx">getIDR</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="kr">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="s2">&#34;http://api.nbp.pl/api/exchangerates/rates/a/idr/&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="kr">const</span> <span class="nx">logIDR</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="c1">// hanya untuk debugging saja
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// console.log(logIDR.rates[0].mid); 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">                <span class="nx">idrEl</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="nx">logIDR</span><span class="p">.</span><span class="nx">rates</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">mid</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nx">getIDR</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Hasilnya adalah sebagai berikut (dengan nilai kurs yang mungkin berbeda, jika nilai kurs telah berubah):</p>
+<p><img src="https://github.com/amuritna/amuritna.github.io/blob/main/assets/idr-html.png?raw=true" alt="alt"></p>
+<hr>
+<h2 id="bagian-5-merancang-fetch-api-menggunakan-google-apps-script">Bagian 5: Merancang <em>Fetch API</em> menggunakan Google Apps Script</h2>
+<p>Seseorang yang ingin merancang APIs sendiri umumnya memulai dengan memilih <em>framework</em> atau <em>library</em> seperti Django, Flask, PHP, atau Node.js. Kemudian, dilakukan <em>set-up</em> database contohnya dengan MySQL atau MongoDB. <em>Hosting</em> dan <em>deployment</em> dapat memanfaatkan platform <em>cloud</em>, biasanya berbayar.</p>
+<p>Namun, terdapat alternatif metode <em>deployment</em> APIs yang lebih cepat dan mudah. Metode ini meliputi merancang API menggunakan Google Apps Script yang akan digunakan untuk mendapatkan informasi dari <em>database</em> berupa suatu <em>spreadsheet</em> di Google Sheets (yang juga dapat diintegrasikan dengan Google Forms).</p>
+<p>Ada berbagai alasan APIs yang dibuat dengan metode ini tidak akan bisa menyaingi APIs yang dirancang mengikuti &ldquo;<em>best practices</em>&rdquo; (seperti menggunakan <em>framework</em> khusus <em>back-end development</em>), contohnya isu skalabilitas. Meski demikian, metode ini dapat dipertimbangkan untuk proyek kecil, <em>prototyping</em>, untuk belajar tentang konsep web APIs, dan tentu saja untuk bermain-bermain.</p>
+<hr>
+<p>Pertama, buat sebuah <em>spreadsheet</em> menggunakan Google Sheets. <em>Spreadsheet</em> inilah yang akan menjadi <em>database</em>. Sebagai contoh, terdapat <em>spreadsheet</em> dengan informasi <em>timestamp</em> dan tanggal sebagai berikut yang merupakan hasil submisi Google Forms.</p>
+<p><img src="https://github.com/amuritna/amuritna.github.io/blob/main/assets/gsheet-example.png?raw=true" alt="alt"></p>
+<p>Kita berencana merancang API yang akan melakukan <em>fetch</em> terhadap informasi yang ada pada <em>spreadsheet</em> ini.</p>
+<p>Pada <em>spreadsheet</em> yang telah dibuka, pilih &ldquo;<em>Extensions</em>&rdquo; &gt; &ldquo;<em>Apps Script</em>&rdquo;. Tindakan ini akan membuka sebuah tab baru.</p>
+<p><img src="https://github.com/amuritna/amuritna.github.io/blob/main/assets/apps-script1.png?raw=true" alt="alt"></p>
+<p>Berikut adalah tampilan yang ada pada tab baru tersebut.</p>
+<p><img src="https://github.com/amuritna/amuritna.github.io/blob/main/assets/apps-script2.png?raw=true" alt="alt"></p>
+<p>Untuk membuat sebuah <em>fetch API</em>, kita mesti menggunakan <code>doGet()</code>. Pada <code>Code.gs</code>, ganti kode <em>template</em> yang sudah ada dengan <em>sample</em> berikut.</p>
+<p>Jangan lupa untuk menyesuaikan <code>var sheetName = ...</code> berdasarkan nama <em>spreadsheet</em> yang digunakan. (Untuk contoh ini, nama <em>spreadsheet</em> tersebut adalah &ldquo;<em>Form Responses 1</em>&rdquo;.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">doGet</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nx">sheetName</span> <span class="o">=</span> <span class="s2">&#34;Form Responses 1&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nx">sheet</span> <span class="o">=</span> <span class="nx">SpreadsheetApp</span><span class="p">.</span><span class="nx">getActiveSpreadsheet</span><span class="p">().</span><span class="nx">getSheetByName</span><span class="p">(</span><span class="nx">sheetName</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">sheet</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">error</span><span class="o">:</span> <span class="s2">&#34;404&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">sheet</span><span class="p">.</span><span class="nx">getDataRange</span><span class="p">().</span><span class="nx">getValues</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="nx">data</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nx">jsonData</span> <span class="o">=</span> <span class="p">[];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">data</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">row</span> <span class="o">=</span> <span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">rowObject</span> <span class="o">=</span> <span class="p">{};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;</span> <span class="nx">headers</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">rowObject</span><span class="p">[</span><span class="nx">headers</span><span class="p">[</span><span class="nx">j</span><span class="p">]]</span> <span class="o">=</span> <span class="nx">row</span><span class="p">[</span><span class="nx">j</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">jsonData</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">rowObject</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">ContentService</span><span class="p">.</span><span class="nx">createTextOutput</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="nx">setMimeType</span><span class="p">(</span><span class="nx">ContentService</span><span class="p">.</span><span class="nx">MimeType</span><span class="p">.</span><span class="nx">JSON</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">myFunction</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">doGet</span><span class="p">();</span>  
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Sekarang, kita siap menguji API ini!</p>
+<p>Untuk melakukan <em>deployment</em>, klik tombol biru <em>Deploy</em> lalu pilih <em>New deployment</em>.</p>
+<p><img src="https://github.com/amuritna/amuritna.github.io/blob/main/assets/apps-script3.png?raw=true" alt="alt"></p>
+<p>Selanjutnya, pilih &ldquo;<em>Web app</em>&rdquo; saat ditanyakan <em>deployment type</em>.</p>
+<p><img src="https://github.com/amuritna/amuritna.github.io/blob/main/assets/apps-script4.png?raw=true" alt="alt"></p>
+<p>Pada pengaturan konfigurasi web app deployment yang muncul, pilih opsi &ldquo;<em>Execute as &gt; User accessing the web app</em>&rdquo; dan &ldquo;<em>Who has access &gt; Only myself</em>&rdquo;. Klik tombol biru <em>Deploy</em>.</p>
+<p><img src="https://github.com/amuritna/amuritna.github.io/blob/main/assets/apps-script5.png?raw=true" alt="alt"></p>
+<p>Setelah proses <em>updating</em> selesai, akan muncul tampilan sebagai berikut. <em>Copy</em> URL yang ada pada bagian &ldquo;<em>Web app</em>&rdquo;.</p>
+<p>URL ini sama seperti URL yang sebelumnya kita gunakan untuk mendapatkan nilai kurs IDR pada <em>public API</em> Bank Polandia — kita dapat mengecek hasilnya langsung di browser. <em>Paste</em> pada <em>URL bar</em> browser, lalu <em>enter</em>.</p>
+<p><img src="https://github.com/amuritna/amuritna.github.io/blob/main/assets/apps-script6.png?raw=true" alt="alt"></p>
+<p>Saat diminta melakukan verifikasi <em>permissions</em>, ikuti saja alurnya. Pilih <em>Review Permissions</em>.</p>
+<p><img src="https://github.com/amuritna/amuritna.github.io/blob/main/assets/apps-script7.png?raw=true" alt="alt"></p>
+<p>Selanjutnya, seleksi <em>Advanced</em> lalu pilih <em>Go to [project name] (unsafe)</em>.</p>
+<p><img src="https://github.com/amuritna/amuritna.github.io/blob/main/assets/apps-script8.png?raw=true" alt="alt"></p>
+<p>Klik <em>Allow</em>. Tindakan ini juga mungkin akan memberikan <em>security notification</em>.</p>
+<p><img src="https://github.com/amuritna/amuritna.github.io/blob/main/assets/apps-script9.png?raw=true" alt="alt"></p>
+<p>Akhirnya, didapatkan <em>response</em> dari <em>fetch API</em> yang telah kita rancang menggunakan Google Apps Script.</p>
+<p>Perhatikan bahwa isinya <em>harusnya</em> sama dengan isi yang ada pada <em>spreadsheet</em>.</p>
+<p><img src="https://github.com/amuritna/amuritna.github.io/blob/main/assets/apps-script10.png?raw=true" alt="alt"></p>
+<p>Kita telah berhasil membuat sebuah <em>fetch API</em>!</p>
+<p>API ini dapat dipanggil dengan cara yang sama seperti API publik dari NBP yang sebelumnya digunakan sebagai contoh.</p>
+<hr>
+<h2 id="further-reading"><em>Further reading</em></h2>
+<p><a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Tools_and_setup/What_are_browser_developer_tools"><em>What are Browser Developer Tools?</em></a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide">Tutorial JavaScript sebagai bahasa pemrograman</a> yang lebih general di Mozilla Developer Network. Lebih ke menjelaskan <em>pure JavaScript</em> daripada menjelaskan JavaScript sebagai alat untuk memanipulasi elemen HTML.</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference">Dokumentasi JavaScript</a> di Mozilla Developer Network.</p>
+<p><a href="https://www.freecodecamp.org/news/how-the-web-works-a-primer-for-newcomers-to-web-development-or-anyone-really-b4584e63585c/"><em>How the Web Works: A Primer for Newcomers to Web Development (or anyone, really)</em></a> di FreeCodeCamp membahas konsep-konsep <em>client, server, request</em>, dan <em>response</em> secara (sedikit) lebih mendalam.</p>
+<p>Penjelasan tentang <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics"><em>Object</em> dalam JavaScript</a> dari MDN. Serta, <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON">apa itu JSON?</a></p>
+<p>Tentang <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Fetching_data">konsep &ldquo;<em>fetching</em>&rdquo;</a>. &ldquo;&hellip; <em>many websites use JavaScript APIs to request data from the server and update the page content without a page load</em>.&rdquo;</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Introducing">Pengenalan <em>asynchronous JavaScript dari MDN</em></a> untuk yang penasaran dan/atau tidak ingin sekadar <em>copy-paste</em>.</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview">Mengenal HTTP</a>, protokol di balik Fetch API. <a href="https://www.freecodecamp.org/news/javascript-fetch-api-for-beginners/">Artikel tentang JavaScript Fetch API</a> di FreeCodeCamp.</p>
+<p><a href="https://developers.google.com/apps-script/guides/web">Dokumentasi terkait</a> untuk Google Apps Script.</p>
+<p><a href="https://firefox-source-docs.mozilla.org/devtools-user/network_monitor/">Dokumentasi Network Monitor untuk Firefox</a>.</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_went_wrong"><em>What went wrong? Troubleshooting JavaScript</em></a> dari MDN (lagi).</p>
+
+    </article>
+  </main>
+  
+
+
+
+
+</div>
+
+
+  <footer class="mt-8 mb-8">
+  <div class="container mx-auto">
+    <div class="mt-8 flex justify-between items-center">
+      <p class="mt-0 text-sm">
+        © 2024 Emmanuella Rumanti |
+        <a href="https://gohugo.io" target="_blank" rel="noopener noreferrer">Hugo</a> on
+        <a href="https://github.com/mivinci/hugo-theme-minima" target="_blank" rel="noopener noreferrer">Minima</a>
+      </p>
+      <p class="flex items-center mt-0">
+        
+          <a class="icon ml-1 mr-1" href="mailto:amuritna@gmail.com" title="email">
+          
+            <svg fill="#63636f" width="22" height="22" viewBox="0 0 24 24"><path d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm9.06 8.683L5.648 6.238L4.353 7.762l7.72 6.555l7.581-6.56l-1.308-1.513l-6.285 5.439z"/></svg>
+          
+          </a>
+        
+          <a class="icon ml-1 mr-1" href="https://github.com/amuritna" title="github">
+          
+            <svg fill="#63636f" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          
+          </a>
+        
+          <a class="icon ml-1 mr-1" href="/index.xml" title="rss">
+          
+            <svg fill="#63636f" t="1626591563876" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1984" width="18" height="16"><path d="M128 768a128 128 0 1 0 0 256 128 128 0 0 0 0-256zM0 368v176c265.104 0 480 214.912 480 480h176c0-362.32-293.696-656-656-656zM0 0v176c468.336 0 848 379.664 848 848h176C1024 458.464 565.536 0 0 0z" p-id="1985"></path></svg>
+          
+          </a>
+        
+      </p>
+    </div>
+  </div>
+  <center>
+    <img class="footercat" src="https://github.com/amuritna/amuritna.github.io/blob/main/assets/cat2.png?raw=true" alt="A simple doodle of a cat sitting by a mug, which has lightning shooting out of it.">
+  </center>
+</footer>
+</body>
+
+</html>

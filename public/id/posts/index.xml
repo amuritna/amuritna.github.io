@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© 2024 Emmanuella Rumanti</copyright>
-    <lastBuildDate>Tue, 25 Jul 2023 14:28:05 +0700</lastBuildDate><atom:link href="https://amuritna.github.io/id/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 21 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://amuritna.github.io/id/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bermain dengan HTTP APIs menggunakan Google Apps Script</title>
+      <link>https://amuritna.github.io/id/posts/intro-http-apis-apps-script/</link>
+      <pubDate>Thu, 21 Nov 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://amuritna.github.io/id/posts/intro-http-apis-apps-script/</guid>
+      <description>Tulisan ini adalah hasil gabungan beberapa tutorial yang saya tulis selama jabatan saya sebagai Ketua Divisi Komputer HME ITB. Tulisan-tulisan tersebut telah diedit ulang dan dipost kembali untuk keperluan pengarsipan.
+Sejauh ini, yang terjadi saat browser nge-render webpage adalah proses interpretasi (HTML dan CSS) dan kompilasi (JavaScript) terhadap kode yang diberikan di .html, .css, dan .js. Informasi yang ditampilkan di webpage sepenuhnya berdasarkan apa yang telah ditulis di kode - jika ingin dilakukan perubahan, kode harus diubah atau ditulis ulang.</description>
+    </item>
+    
     <item>
       <title>[Repost] Membaca dan Menulis File dengan Python</title>
       <link>https://amuritna.github.io/id/posts/io-python/</link>
