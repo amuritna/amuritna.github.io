@@ -2,7 +2,27 @@
 Hi! This is my personal website, available [here](https://amuritna.github.io).
 
 .
+
 .
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.
+
+.
+
 .
 
 ## GitHub Stats
