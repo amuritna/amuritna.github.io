@@ -15,12 +15,12 @@ languages:
     languageName: EN
     weight: 1
     author_desc: | 
-      Hi! My name is Emma. I am an undergraduate Electrical Engineering student at [Institut Teknologi Bandung](https://en.wikipedia.org/wiki/Bandung_Institute_of_Technology). My interests include [chip design](https://en.wikipedia.org/wiki/Integrated_circuit_design) and [digital electronics](https://en.wikipedia.org/wiki/Digital_electronics).
+      Electrical engineering student interested in chip design & more.
   id:
     languageName: ID
     weight: 2
     author_desc: |
-        Hai! Nama saya Emma. Saat ini saya adalah mahasiswa S-1 Teknik Elektro di [Institut Teknologi Bandung](https://en.wikipedia.org/wiki/Bandung_Institute_of_Technology). Saya tertarik [perancangan chip](https://en.wikipedia.org/wiki/Integrated_circuit_design) dan [elektronika digital](https://en.wikipedia.org/wiki/Digital_electronics).
+       Mahasiswa Teknik Elektro yang tertarik perancangan chip & lainnya.
     params:
       greet: Emmanuella Rumanti
   # to hide "de" from navigation:
