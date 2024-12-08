@@ -1,13 +1,14 @@
 ---
 title: "About"
 date: 2024-05-09
+description: About me, and about this website.
 ---
 
-Hello! My name is Emmanuella Rumanti, also known as amuritna [\[1\]](#notes). I can be contacted [via e-mail](mailto:amuritna@gmail.com). You can also find me on [LinkedIn](https://linkedin.com/in/emmanuella-rumanti/) and [GitHub](https://github.com/amuritna/).
+Hello! My name is Emmanuella Rumanti, also known as amuritna [\[1\]](#notes). I am affliated with the School of Electrical Engineering and Informatics at [Institut Teknologi Bandung](https://en.wikipedia.org/wiki/Bandung_Institute_of_Technology), Indonesia, where I am in my last year of pursuing a B.S. in Electrical Engineering.
 
-At the moment, I am affliated with the School of Electrical Engineering and Informatics at [Institut Teknologi Bandung](https://en.wikipedia.org/wiki/Bandung_Institute_of_Technology), Indonesia, where I am in my last year of pursuing a B.S. in Electrical Engineering. My current work  — my team's capstone design project — focuses on the design of specialized hardware to secure voice communication on an untrusted device. 
+My current work  — my team's capstone design project — focuses on the design of specialized hardware to secure voice communication on an untrusted device. My other interests include computer engineering, programming, register-transfer level design, instruction set architecture, firmware, chip design, open source software, and the combination of the last two (e.g. open source silicon compilers!). 
 
-My other interests include computer engineering, programming, register-transfer level design, instruction set architecture, firmware, chip design, open source software, and the combination of the last two (e.g. open source silicon compilers!). 
+I can be contacted [via e-mail](mailto:amuritna@gmail.com). You can also find me on [LinkedIn](https://linkedin.com/in/emmanuella-rumanti/) and [GitHub](https://github.com/amuritna/).
 
 ---
 
