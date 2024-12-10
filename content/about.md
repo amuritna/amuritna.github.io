@@ -3,6 +3,7 @@ title: "About"
 date: 2024-05-09
 description: About me, and about this website.
 ---
+---
 
 Hello! My name is Emmanuella Rumanti, also known as amuritna [\[1\]](#notes). I am affliated with the School of Electrical Engineering and Informatics at [Institut Teknologi Bandung](https://en.wikipedia.org/wiki/Bandung_Institute_of_Technology), Indonesia, where I am in my last year of pursuing a B.S. in Electrical Engineering.
 
@@ -14,7 +15,7 @@ I can be contacted [via e-mail](mailto:amuritna@gmail.com). You can also find me
 
 This is my personal website and it is available in both English (EN) and Indonesian (ID) [\[2\]](#notes) — the homepage for each language may be accessed via the navigation on the top-right. To toggle between light and dark modes, click on the city icon on the top left.
 
-You can also browse posts [by category](/categories/) or [by tag](/tags/).
+You can also browse posts [by category](/categories/) or [by tag](/tags/). None of the posts here were written or illustrated using generative AI.
 
 To subscribe, an RSS feed is available in both [English](/index.xml) and [Indonesian](/id/index.xml).
 &nbsp;
